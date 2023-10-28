@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -149,7 +148,7 @@ const About = () => {
         </div>
 
         <h3 className="font-extrabold text-xl md:text-2xl bg-gray-100 mt-5 md:mt-10 text-center drop-shadow-md">
-          7- CHILDREN'S PRIVACY
+          7- CHILDREN&apos;S PRIVACY
         </h3>
         <div className="text-justify">
           <p>

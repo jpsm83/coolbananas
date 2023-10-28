@@ -1,7 +1,7 @@
 "use client";
 
 import { SafeRecipe, SafeReview, SafeUser } from "@/app/types";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";

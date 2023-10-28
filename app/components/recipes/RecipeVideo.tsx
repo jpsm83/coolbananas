@@ -1,8 +1,9 @@
+"use client";
+
 import { SafeRecipe, SafeUser } from "@/app/types";
 import Image from "next/image";
 import React from "react";
 import { FiYoutube } from "react-icons/fi";
-import RecipeCard from "./RecipeCard";
 import YouTube from "../Youtube";
 interface RecipeVideoProps {
   currentUser: SafeUser | null | undefined;

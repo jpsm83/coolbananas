@@ -1,5 +1,3 @@
-'use client';
-
 import { BiFoodMenu } from "react-icons/bi";
 import {
   AiOutlineApple,
@@ -17,7 +15,7 @@ export const categories = [
     {
       label: "Type",
       icon: BiFoodMenu,
-      options: ['Breakfast', 'Lunch', 'Brunch', 'Dinner', 'Appetizers', 'Snacks', 'Salads', 'Sides', 'Soups', 'Bread', 'Drinks', 'Desert', 'Sauces', 'Starters', 'Mains', 'BBQ'],
+      options: ['Breakfast', 'Lunch', 'Brunch', 'Dinner', 'Appetizers', 'Snacks', 'Salads', 'Sides', 'Soups', 'Bread', 'Drinks', 'Desert', 'Sauces', 'Starters', 'Mains'],
       description: "undefined",
     },
     {

@@ -1,7 +1,6 @@
 "use client";
 
 import { SafeRecipe } from "@/app/types";
-import Image from "next/image";
 import { AiOutlineFieldTime, AiOutlineBulb } from "react-icons/ai";
 interface RecipeTipsTricksProps {
   recipe: SafeRecipe;

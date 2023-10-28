@@ -1,7 +1,6 @@
 "use client";
 
 import PreparationsInput from "../../inputs/PreparationsInput";
-import Image from "next/image";
 import Heading from "../../Heading";
 import { SafeUser } from "@/app/types";
 

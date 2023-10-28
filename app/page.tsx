@@ -6,7 +6,7 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import Recipes from "./components/Recipes";
 import Filters from "./components/Filters";
-import Halloween from "./components/events/Halloween";
+import Halloween from "./components/holidays/Halloween";
 
 export default async function Home({
   searchParams,

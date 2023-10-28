@@ -1,7 +1,6 @@
 "use client";
 
 import HowToCookInput from "../../inputs/HowToCookInput";
-import Image from "next/image";
 import Heading from "../../Heading";
 import { SafeUser } from "@/app/types";
 

@@ -16,7 +16,6 @@ import RecipeVideo from "@/app/components/recipes/RecipeVideo";
 import RecipeSharing from "@/app/components/recipes/RecipeSharing";
 import RecipeModalUpdate from "@/app/components/modals/RecipeModalUpdate";
 import Logo from "@/app/components/navbar/Logo";
-import { useState } from "react";
 
 interface RecipeClientProps {
   recipe: SafeRecipe;
