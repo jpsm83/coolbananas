@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  role           Role      @default(BASIC)
+  emailVerified  DateTime?
+  image          String?   @default("/images/placeholder.jpg")
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime? @updatedAt
+  active         Boolean   @default(true)
+  faults         Int       @default(0)
+  favoriteIds    String[]  @db.ObjectId
+  subscriber     Boolean   @default(false)
+
+  // those lines establish the relation with other models
+  accounts        Account[]
+  reviews         Review[]
+  reports         Report[]
+  recipes         Recipe[]  @relation("RecipeCreator")
+  favoriteRecipes Recipe[]  @relation("FavoriteBy")
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String @db.ObjectId
+
+  @@unique([provider, providerAccountId])
+}
+
+model Recipe {
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  language             String    @default("en-US")
+  name                 String    @unique
+  description          String
+  imageSrc             String[]
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime? @updatedAt
+  type                 String[]
+  diet                 String[]
+  cuisine              Json
+  country              String
+  season               String[]
+  method               String[]
+  timePrep             Int
+  timeCook             Int
+  timeAdditional       Int
+  timeTotal            Int
+  servings             Int
+  ingredients          Json[]
+  listIngredientsNames String[]
+  tipsTricks           Json[]
+  preparation          Json[]
+  howToCook            Json[]
+  allergens            String[]
+  events               String[]
+  video                String?
+  carbs                Float?
+  sugars               Float?
+  protein              Float?
+  fat                  Float?
+  fibre                Float?
+  kcal                 Float?
+  salt                 Float?
+  saturates            Float?
+  // ratings              Json[]
+  rateAvg              Int       @default(0)
+  listed               Boolean   @default(true)
+
+  author   User   @relation("RecipeCreator", fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  authorId String @db.ObjectId
+
+  favoriteBy   User     @relation("FavoriteBy", fields: [favoriteById], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  favoriteById String[] @db.ObjectId
+
+  // Add this line to establish the relation with Review model
+  reviews Review[]
+  reports Report[]
+}
+
+model Review {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime @default(now())
+  ratingValue Int
+  content     String?
+  likes       Int?     @default(0)
+  likedIds    String[] @db.ObjectId
+  reply       String?
+
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  authorId String @db.ObjectId
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  recipeId String @db.ObjectId
+}
+
+model Report {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  type      String[]
+  comment   String
+  openCase  Boolean  @default(true)
+
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  authorId String @db.ObjectId
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  recipeId String @db.ObjectId
+}
+
+enum Role {
+  BASIC
+  ADMIN
+}
