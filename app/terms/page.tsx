@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-const About = () => {
+const Terms = () => {
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -130,10 +131,10 @@ const About = () => {
 
         <div className="text-justify">
           <h3 className="font-bold text-md md:text-lg drop-shadow-md">
-            1.6- Company&apos;s privacy police
+            1.6- Company's privacy police
           </h3>
           <p>
-            The Company&apos;s Privacy Policy outlines its policies regarding the
+            The Company's Privacy Policy outlines its policies regarding the
             privacy of Registration Data and other data provided by the user or
             collected by the Company.
           </p>
@@ -206,7 +207,7 @@ const About = () => {
             2.4- Ratings and reviews
           </h3>
           <p>
-            Users&apos; ratings and reviews on our Services are not endorsed by the
+            Users' ratings and reviews on our Services are not endorsed by the
             Company and do not represent its views. The Company does not assume
             liability for ratings or economic loss. Users must base ratings on
             their first-hand experience, avoid providing reviews for businesses
@@ -253,7 +254,7 @@ const About = () => {
             3.2- Trademarks
           </h3>
           <p>
-            The Company&apos;s stylized name, trademarks, graphics, logos, service
+            The Company's stylized name, trademarks, graphics, logos, service
             marks, and trade names are its property and may not be used without
             permission with third-party products or services. Users are
             prohibited from removing, altering, or obscuring these rights
@@ -287,7 +288,7 @@ const About = () => {
             gain unauthorized access to other computer systems through the
             Services, interfere with the proper functioning of the Services, or
             attempt to harm the Services in any way that could interfere with
-            any party&apos;s use or enjoyment of the Services.
+            any party's use or enjoyment of the Services.
           </p>
         </div>
 
@@ -311,7 +312,7 @@ const About = () => {
             The Services offer the functionality to embed videos on other
             websites or blog pages, along with the Player. This is done by
             providing the necessary HTML code to include on the page. The actual
-            video stream is served from the company&apos;s servers, but the embedded
+            video stream is served from the company's servers, but the embedded
             video may be rendered to the visitor. Users must not alter the
             Embedded Video, facilitate access through any other tool, and use it
             for commercial purposes, provided it is not part of a service that
@@ -346,8 +347,8 @@ const About = () => {
           </h3>
           <p>
             The company acknowledges that the use of its services and products
-            is at the user&apos;s sole risk and are provided on an &quot;as is&quot; and &quot;as
-            available&quot; basis. The company disclaims all warranties,
+            is at the user's sole risk and are provided on an "as is" and "as
+            available" basis. The company disclaims all warranties,
             representations, and conditions, including those regarding
             availability, accuracy, timeliness, ms-delivery, and
             non-infringement. The company also assumes no responsibility for the
@@ -405,7 +406,7 @@ const About = () => {
             4.6- Exclusions
           </h3>
           <p>
-            Some states&apos; laws may not allow for the exclusion or limitation of
+            Some states' laws may not allow for the exclusion or limitation of
             certain damages, so the aforementioned warranties, exclusions, and
             limitations may not apply to you.
           </p>
@@ -416,7 +417,7 @@ const About = () => {
             4.7- Survival
           </h3>
           <p>
-            This section&apos;s provisions will remain in effect even after the
+            This section's provisions will remain in effect even after the
             termination of your Account, this Agreement, or access to the
             Services.
           </p>
@@ -431,7 +432,7 @@ const About = () => {
             5.1- Disclaimer
           </h3>
           <p>
-            The Services provide information on an &quot;as is&quot; basis, with no
+            The Services provide information on an "as is" basis, with no
             guarantees for accuracy or quality. Users are responsible for
             verifying the information for personal use and not for any errors or
             omissions.
@@ -474,7 +475,7 @@ const About = () => {
             <li>
               a statement that the information in your notice is accurate and
               you are the copyright owner or authorized to act on the copyright
-              owner&apos;s behalf.
+              owner's behalf.
             </li>
           </ol>
         </div>
@@ -499,7 +500,7 @@ const About = () => {
           <p>
             You must provide your current email address for Company to receive
             notices and other purposes. If your last email is invalid or not
-            capable of delivering necessary notices, Company&apos;s dispatch of the
+            capable of delivering necessary notices, Company's dispatch of the
             email will be effective. You can send notice to Dotdash Media Inc.
             at their address.
           </p>
@@ -518,7 +519,7 @@ const About = () => {
             Company is not liable for delays or failures due to causes outside
             its control, such as acts of God, war, terrorism, or pandemics. The
             Agreement and your rights cannot be assigned, subcontracted,
-            delegated, or transferred without Company&apos;s prior written consent.
+            delegated, or transferred without Company's prior written consent.
             Any attempted assignment or transfer will be null and void.
           </p>
         </div>
@@ -551,4 +552,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Terms;

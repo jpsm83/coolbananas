@@ -3,6 +3,8 @@
 import Heading from "../../Heading";
 import { SafeUser } from "@/app/types";
 import ImageUpload from "../../inputs/ImageUpload";
+import { error } from "console";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface StepPhotosProps {

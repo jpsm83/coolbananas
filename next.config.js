@@ -4,6 +4,7 @@ const nextConfig = {
     domains: [
       "lh3.googleusercontent.com",
       "restcountries.com",
+      "platform-lookaside.fbsbx.com",
     ],
   },
 };

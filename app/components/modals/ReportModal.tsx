@@ -10,7 +10,7 @@ import Input from "../inputs/Input";
 import Heading from "../Heading";
 import useReportModal from "@/app/hooks/useReportModal";
 import OptionsInput from "../inputs/OptionsInput";
-import { SafeRecipe } from "@/app/types";
+import { SafeRecipe, SafeReport, SafeUser } from "@/app/types";
 import axios from "axios";
 
 interface ReportModalProps {

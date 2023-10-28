@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://https://coolbananas.org/"),
+  metadataBase: new URL("http://coolbananas.org"),
   title: {
     default: "Cool Bananas",
     template: `%s | Cool Bananas`,

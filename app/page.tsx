@@ -47,8 +47,8 @@ export default async function Home({
     <ClientOnly>
       <Container>
         <Halloween />
+        <div className="pt-16">
         <Filters />
-        
         {recipes.safeRecipes.length === 0 && <EmptyState />}
 
         {/* Display recipes */}
@@ -94,6 +94,7 @@ export default async function Home({
               )}
             </div>
           )}
+          </div>
       </Container>
     </ClientOnly>
   );

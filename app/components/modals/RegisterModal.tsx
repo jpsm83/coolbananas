@@ -97,6 +97,12 @@ const RegisterModal = () => {
         image="/images/lg_google.webp"
         onClick={() => signIn("google")}
       />
+      <Button
+        outline
+        label="Continue with Facebook"
+        image="/images/lg_facebook.png"
+        onClick={() => signIn("facebook")}
+      />
       <div
         className="
           text-neutral-500 

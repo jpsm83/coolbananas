@@ -1,7 +1,7 @@
 "use client";
 
 import Heading from "../../Heading";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import Input from "../../inputs/Input";
 import { SafeUser } from "@/app/types";
 

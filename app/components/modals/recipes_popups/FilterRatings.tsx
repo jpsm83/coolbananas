@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { LuBanana } from "react-icons/lu";
 
 interface FilterRatingsProps {

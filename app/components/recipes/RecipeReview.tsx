@@ -2,7 +2,7 @@
 
 import useReviewModal from "@/app/hooks/useReviewModal";
 import { SafeRecipe, SafeReview, SafeUser } from "@/app/types";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { toast } from "react-hot-toast";
