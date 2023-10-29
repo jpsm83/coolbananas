@@ -3,15 +3,12 @@
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { AiOutlineFieldTime, AiOutlineStar } from "react-icons/ai";
+import { AiOutlineFieldTime } from "react-icons/ai";
 import useCountries from "@/app/hooks/useCountries";
 import { SafeRecipe, SafeUser } from "@/app/types";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-import axios from "axios";
-import { toast } from "react-hot-toast";
 import RatingRadio from "../RatingRadio";
-import { useCallback, useState } from "react";
 import useRecipeModalUpdate from "@/app/hooks/useRecipeModalUpdate";
 import useDeleteModal from "@/app/hooks/useDeleteModal";
 
@@ -66,6 +63,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, currentUser }) => {
             alt="Recipe"
             width={600}
             height={600}
+            objectPosition="center"
             className="
               h-full w-full
                 hover:scale-110 
