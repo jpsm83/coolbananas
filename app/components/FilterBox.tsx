@@ -24,52 +24,41 @@ const FilterBox: React.FC<FilterBoxProps> = ({
   const emptyFilter = () => {
     switch (label) {
       case "Type":
-        setIsEmpty(
-            recipeFilter.dataFilter?.type.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.type.length === 0);
         break;
       case "Diet":
-        setIsEmpty(recipeFilter.dataFilter?.diet.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.diet.length === 0);
         break;
       case "Season":
-        setIsEmpty(recipeFilter.dataFilter?.season.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.season.length === 0);
         break;
       case "Method":
-        setIsEmpty(recipeFilter.dataFilter?.method.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.method.length === 0);
         break;
       case "Allergens":
-        setIsEmpty(recipeFilter.dataFilter?.allergens.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.allergens.length === 0);
         break;
       case "Events":
-        setIsEmpty(recipeFilter.dataFilter?.events.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.events.length === 0);
         break;
       case "Time":
         setIsEmpty(
-            recipeFilter.dataFilter?.maxHours === 0 &&
-              recipeFilter.dataFilter?.maxMinutes === 0
+          recipeFilter.dataFilter?.maxHours === 0 &&
+            recipeFilter.dataFilter?.maxMinutes === 0
         );
         break;
       case "Ratings":
-        setIsEmpty(
-            recipeFilter.dataFilter?.ratings === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.ratings === 0);
         break;
       case "Ingredients":
-        setIsEmpty(
-            recipeFilter.dataFilter?.ingredients.length === 0
-        );
+        setIsEmpty(recipeFilter.dataFilter?.ingredients.length === 0);
         break;
       case "Cuisine":
         setIsEmpty(
           recipeFilter.dataFilter?.cuisine == null ||
-          Object.keys(recipeFilter.dataFilter.cuisine).length === 0
+            Object.keys(recipeFilter.dataFilter.cuisine).length === 0
         );
-      break;
+        break;
       default:
         break;
     }

@@ -39,7 +39,6 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({
           <Image
             alt="Video not ready yet!"
             src="/images/video_not_ready.png"
-            sizes="100vw"
             width={600}
             height={600}
             style={{
@@ -47,7 +46,6 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({
               height: "auto",
               objectFit: "cover",
             }}
-            objectPosition="center"
           />
         )}
       </div>

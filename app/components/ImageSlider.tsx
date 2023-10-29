@@ -42,11 +42,9 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
               width={600}
               height={600}
               className="h-full w-full aspect-[4/3]"
-              objectPosition="center"
               style={{
                 objectFit: "cover",
               }}
-    
             />
           </div>
         ))}

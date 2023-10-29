@@ -17,7 +17,6 @@ const Terms = () => {
         <Image
           alt="Recipe"
           src={"/images/bananas.png"}
-          sizes="100vw"
           width={600}
           height={600}
           style={{
@@ -25,7 +24,6 @@ const Terms = () => {
             height: "160px",
             objectFit: "cover",
           }}
-          objectPosition="center"
         />
         <div className="absolute">
           <h1 className="text-3xl font-bold text-white">Terms of service</h1>

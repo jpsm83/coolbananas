@@ -9,21 +9,21 @@ const Logo = () => {
   const recipeFilters = useFilters();
 
   const redirectUrl = () => {
-      router.push('/' + recipeFilters.url);
-    }
+    router.push("/" + recipeFilters.url);
+  };
 
   return (
-    <div className="fill-current px-4">
       <Image
         onClick={() => redirectUrl()}
         alt="Logo"
         className="cursor-pointer"
-        object-fit="cover"
+        style={{
+          objectFit: "cover",
+        }}
         width={220}
-        height={100}
+        height={220}
         src="/images/logo.png"
       />
-    </div>
   );
 };
 
