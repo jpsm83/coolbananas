@@ -1,7 +1,6 @@
 "use client";
 
 import PreparationsInput from "../../inputs/PreparationsInput";
-import Image from "next/image";
 import Heading from "../../Heading";
 import { SafeUser } from "@/app/types";
 
@@ -59,13 +58,13 @@ const StepPreparation: React.FC<StepPreparationProps> = ({
               <p className="flex flex-wrap">{index + 1}-</p>
               <p>{preparations}</p>
             </div>
-              <button
-                onClick={() => handleDeletePreparations(index)}
-                className="text-red-400 hover:text-red-800 w-6 flex items-end ml-2"
-              >
-                X
-              </button>
-            </div>
+            <button
+              onClick={() => handleDeletePreparations(index)}
+              className="text-red-400 hover:text-red-800 w-6 flex items-end ml-2"
+            >
+              X
+            </button>
+          </div>
         ))}
       </div>
     </div>

@@ -8,7 +8,6 @@ import Heading from "../Heading";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-
 import StepName from "./recipes_popups/StepName";
 import StepDescription from "./recipes_popups/StepDescription";
 import StepType from "./recipes_popups/StepType";
@@ -261,7 +260,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           setStep(STEPS.LEGAL);
           recipeModalCreate.onClose();
           router.refresh();
-          router.push('/')
+          router.push("/");
         })
         .catch(() => {
           toast.error("Something went wrong.");

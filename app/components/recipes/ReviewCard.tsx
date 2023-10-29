@@ -34,7 +34,6 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     currentUser,
   });
 
-
   const openReplyModal = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
@@ -112,7 +111,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       console.warn("Cannot delete review: currentUser or review is invalid.");
     }
   }, [router, review, currentUser]);
-  
+
   return (
     <div className="bg-gray-100 p-4 md:p-8">
       <ReplyModal recipe={recipe} currentUser={currentUser} />

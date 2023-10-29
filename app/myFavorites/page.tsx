@@ -1,7 +1,3 @@
-// this is a server component
-// we cant use hooks to a server component
-// thats why we are not using useRouter to navigate to recipes pages
-
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getRecipes from "@/app/actions/getRecipes";
 import ClientOnly from "@/app/components/ClientOnly";
@@ -87,7 +83,7 @@ const MyFavoritesPage = async ({
   return (
     <ClientOnly>
       <Container>
-      <Filters />
+        <Filters />
 
         {recipes.safeRecipes.length === 0 && <EmptyState />}
         {/* Display recipes */}

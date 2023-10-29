@@ -19,14 +19,14 @@ const Filters = () => {
 
   const setQueryUrl = () => {
     let filterUrl;
-    let queryUrl = '';
-  
+    let queryUrl = "";
+
     if (pathname !== currentPath) {
       // If pathname and currentPath are different, update currentPath and make queryUrl empty
       setCurrentPath(pathname);
-      queryUrl = '';
+      queryUrl = "";
     }
-  
+
     const allFilters = [
       "type",
       "diet",
@@ -39,11 +39,11 @@ const Filters = () => {
       "events",
       "ratings",
     ];
-  
+
     for (let x = 0; x < allFilters.length; x++) {
       const filterName = allFilters[x];
       const filterValues = recipeFilters.dataFilter?.[filterName];
-  
+
       if (
         filterName === "cuisine" &&
         recipeFilters.dataFilter?.cuisine?.value
@@ -89,19 +89,19 @@ const Filters = () => {
         }
       }
     }
-  
+
     if (queryUrl.length > 0) {
       filterUrl = pathname + "?" + queryUrl.slice(1);
     } else {
       filterUrl = pathname;
     }
-    recipeFilters.setUrl("?" + queryUrl.slice(1))
+    recipeFilters.setUrl("?" + queryUrl.slice(1));
     return filterUrl;
   };
-  
+
   useEffect(() => {
     router.push(setQueryUrl()!);
-}, [recipeFilters.dataFilter]);
+  }, [recipeFilters.dataFilter]);
 
   return (
     <Container>

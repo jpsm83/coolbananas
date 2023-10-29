@@ -13,17 +13,17 @@ const Logo = () => {
   };
 
   return (
-      <Image
-        onClick={() => redirectUrl()}
-        alt="Logo"
-        className="cursor-pointer"
-        style={{
-          objectFit: "cover",
-        }}
-        width={220}
-        height={220}
-        src="/images/logo.png"
-      />
+    <Image
+      onClick={() => redirectUrl()}
+      alt="Logo"
+      className="cursor-pointer"
+      style={{
+        objectFit: "cover",
+      }}
+      width={220}
+      height={220}
+      src="/images/logo.png"
+    />
   );
 };
 

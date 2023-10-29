@@ -20,10 +20,9 @@ const StepVideo: React.FC<StepVideoProps> = ({
   register,
   setCustomValue,
 }) => {
-
   const handleChange = () => {
-    setCustomValue("video", video)
-  }
+    setCustomValue("video", video);
+  };
 
   return (
     <div className="flex flex-col gap-8">

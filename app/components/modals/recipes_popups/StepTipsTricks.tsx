@@ -58,12 +58,12 @@ const StepTipsTricks: React.FC<StepTipsTricksProps> = ({
               <p className="flex flex-wrap">{index + 1}-</p>
               <p>{tipsTricks}</p>
             </div>
-              <button
-                onClick={() => handleDeleteTipsTricks(index)}
-                className="text-red-400 hover:text-red-800 w-6 flex items-end ml-2"
-              >
-                X
-              </button>
+            <button
+              onClick={() => handleDeleteTipsTricks(index)}
+              className="text-red-400 hover:text-red-800 w-6 flex items-end ml-2"
+            >
+              X
+            </button>
           </div>
         ))}
       </div>

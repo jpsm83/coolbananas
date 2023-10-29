@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 
@@ -43,13 +42,13 @@ export async function PUT(
     if (!currentUser) {
       throw new Error("Current user not found!");
     }
-  
+
     const { recipeId } = params;
-    
+
     if (!recipeId || typeof recipeId !== "string") {
       throw new Error("Invalid recipe Id!");
     }
-  
+
     const body = await request.json();
 
     const currentRecipe = await prisma.recipe.findUnique({
@@ -57,28 +56,28 @@ export async function PUT(
         id: recipeId,
       },
     });
-  
+
     if (currentRecipe) {
       // @ts-ignore
       delete currentRecipe.id;
     }
-  
+
     if (!currentRecipe) {
       throw new Error("Recipe not found!");
     }
-  
+
     const updatedRecipe = {
       ...currentRecipe,
       ...body,
     };
-  
+
     const updated = await prisma.recipe.update({
       where: {
         id: recipeId,
       },
       data: updatedRecipe,
     });
-  
+
     return NextResponse.json(updated);
   } catch (error) {
     return NextResponse.error();

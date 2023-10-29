@@ -18,7 +18,7 @@ const Recipes: React.FC<RecipesProps> = ({ recipes, currentUser }) => {
     renderedRecipes.push(
       <div className="bg-gray-100" key="advertise0">
         <div className="flex justify-center items-center h-40 md:h-full font-bold text-gray-400">
-          A D V E R T I S E
+          A D V E R T I S I N G{" "}
         </div>
       </div>
     );
@@ -43,7 +43,7 @@ const Recipes: React.FC<RecipesProps> = ({ recipes, currentUser }) => {
       renderedRecipes.push(
         <div className="bg-gray-100" key={`advertise${i}`}>
           <div className="flex justify-center items-center h-40 md:h-full font-bold text-gray-400">
-            A D V E R T I S E
+            A D V E R T I S I N G{" "}
           </div>
         </div>
       );

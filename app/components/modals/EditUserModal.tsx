@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useEditUserModal from "@/app/hooks/useEditUser";
@@ -53,7 +53,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ currentUser }) => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    if(password === password2){
+    if (password === password2) {
       try {
         setIsLoading(true);
         await axios
@@ -72,7 +72,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ currentUser }) => {
           });
       } catch (error) {
         console.error(error);
-      }  
+      }
     } else {
       toast.error("Passwords are not the same!");
     }
@@ -80,7 +80,10 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ currentUser }) => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Edit and update chef's details" subtitle="Update user info" />
+      <Heading
+        title="Edit and update chef's details"
+        subtitle="Update user info"
+      />
       <Input
         id="name"
         label="Name"
@@ -121,7 +124,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ currentUser }) => {
         errors={errors}
         onClick={() => handleTypeClick("password", password)}
       />
-            <Input
+      <Input
         id="password2"
         label="Repeat your Password"
         value={password2}

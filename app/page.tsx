@@ -57,42 +57,42 @@ export default async function Home({
         {/* Pagination */}
         {lastPage !== 1 && recipes.safeRecipes.length !== 0 && (
           <div className="flex justify-center gap-4 pb-8 pt-2">
-          {page > 1 && (
-            <Link
-              href={{
-                pathname: "/",
-                // @ts-ignore
-                query: {
-                  ...(searchQuery ? { ...searchQuery } : {}),
-                  page: page > 1 ? page - 1 : 1,
-                },
-              }}
-              className="rounded-lg bg-orange-500 py-2 md:py-2 text-md md:text-lg font-bold  text-white hover:opacity-80
+            {page > 1 && (
+              <Link
+                href={{
+                  pathname: "/",
+                  // @ts-ignore
+                  query: {
+                    ...(searchQuery ? { ...searchQuery } : {}),
+                    page: page > 1 ? page - 1 : 1,
+                  },
+                }}
+                className="rounded-lg bg-orange-500 py-2 md:py-2 text-md md:text-lg font-bold  text-white hover:opacity-80
             transition text-center
             w-28"
-            >
-              Previous
-            </Link>
-          )}
-              {page !== lastPage && (
-            <Link
-              href={{
-                pathname: "/",
-                // @ts-ignore
-                query: {
-                  ...(searchQuery ? { ...searchQuery } : {}),
-                  page: page !== lastPage ? page + 1 : lastPage,
-                },
-              }}
-              className="rounded-lg bg-orange-500 py-2 md:py-2 text-md md:text-lg font-bold  text-white hover:opacity-80
+              >
+                Previous
+              </Link>
+            )}
+            {page !== lastPage && (
+              <Link
+                href={{
+                  pathname: "/",
+                  // @ts-ignore
+                  query: {
+                    ...(searchQuery ? { ...searchQuery } : {}),
+                    page: page !== lastPage ? page + 1 : lastPage,
+                  },
+                }}
+                className="rounded-lg bg-orange-500 py-2 md:py-2 text-md md:text-lg font-bold  text-white hover:opacity-80
             transition text-center
             w-28"
-            >
-                  Next
-                </Link>
-              )}
-            </div>
-          )}
+              >
+                Next
+              </Link>
+            )}
+          </div>
+        )}
       </Container>
     </ClientOnly>
   );

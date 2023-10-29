@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
 import Image from "next/image";

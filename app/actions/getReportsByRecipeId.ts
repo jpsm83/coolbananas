@@ -1,5 +1,3 @@
-// this is an action for a server component, not an api call
-
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {
@@ -15,13 +13,13 @@ export default async function getReportsByRecipeId(params: IParams) {
     }
 
     const reports = await prisma.report.findMany({
-    where: {
-      recipeId,
-    },
-    include: {
-      author: true,
-    },
-  });
+      where: {
+        recipeId,
+      },
+      include: {
+        author: true,
+      },
+    });
 
     const safeReports = reports.map((report) => ({
       ...report,

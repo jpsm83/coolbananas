@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import OptionsInput from "../../inputs/OptionsInput";
 import { categories } from "@/app/dataValuesVariables";
 import Heading from "../../Heading";
@@ -10,7 +9,7 @@ interface StepTypeProps {
   currentUser?: SafeUser | null | undefined;
   headerOff?: boolean;
   type?: string[];
-  setCustomValue: (value: string, type: string | number | undefined ) => void;
+  setCustomValue: (value: string, type: string | number | undefined) => void;
 }
 
 const StepType: React.FC<StepTypeProps> = ({
@@ -19,7 +18,6 @@ const StepType: React.FC<StepTypeProps> = ({
   currentUser,
   headerOff,
 }) => {
-
   const handleTypeClick = (selectedType: string) => {
     if (type?.includes(selectedType as never)) {
       setCustomValue(

@@ -1,3 +1,5 @@
+"use client";
+
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import { useCallback, useEffect, useState } from "react";
@@ -5,8 +7,6 @@ import MenuItem from "./MenuItem";
 import { useRouter } from "next/navigation";
 import { SafeUser } from "@/app/types";
 import useFilters from "@/app/hooks/useFilters";
-
-// Import modal hooks and signOut separately for clarity.
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRecipeModalCreate from "@/app/hooks/useRecipeModalCreate";
@@ -34,10 +34,20 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   // Close the menu when any modal is open.
   useEffect(() => {
-    if (loginModal.isOpen || registerModal.isOpen || recipeModalCreate.isOpen || editUserModal.isOpen) {
+    if (
+      loginModal.isOpen ||
+      registerModal.isOpen ||
+      recipeModalCreate.isOpen ||
+      editUserModal.isOpen
+    ) {
       setIsOpen(false);
     }
-  }, [loginModal.isOpen, registerModal.isOpen, recipeModalCreate.isOpen, editUserModal.isOpen]);
+  }, [
+    loginModal.isOpen,
+    registerModal.isOpen,
+    recipeModalCreate.isOpen,
+    editUserModal.isOpen,
+  ]);
 
   // Helper function to handle redirection and close the menu.
   const handleRedirection = (redirectTo: string) => {
@@ -97,17 +107,35 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => handleRedirection("/myCreations")} label="My creations" />
-                <MenuItem onClick={() => handleRedirection("/myFavorites")} label="My favorites" />
-                <MenuItem onClick={() => openModal("recipeModalCreate")} label="Create a recipe" />
-                <MenuItem onClick={() => openModal("editUserModal")} label="Edit User" />
+                <MenuItem
+                  onClick={() => handleRedirection("/myCreations")}
+                  label="My creations"
+                />
+                <MenuItem
+                  onClick={() => handleRedirection("/myFavorites")}
+                  label="My favorites"
+                />
+                <MenuItem
+                  onClick={() => openModal("recipeModalCreate")}
+                  label="Create a recipe"
+                />
+                <MenuItem
+                  onClick={() => openModal("editUserModal")}
+                  label="Edit User"
+                />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>
             ) : (
               <>
-                <MenuItem onClick={() => openModal("loginModal")} label="Login" />
-                <MenuItem onClick={() => openModal("registerModal")} label="Sign up" />
+                <MenuItem
+                  onClick={() => openModal("loginModal")}
+                  label="Login"
+                />
+                <MenuItem
+                  onClick={() => openModal("registerModal")}
+                  label="Sign up"
+                />
               </>
             )}
           </div>

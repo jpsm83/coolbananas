@@ -13,7 +13,6 @@ const useRecipeModalUpdate = create<RecipeModalUpdateStore>((set) => ({
   isOpen: false,
   onOpen: (recipe?) => set({ isOpen: true, recipe }),
   onClose: () => set({ isOpen: false, recipe: null }),
-})
-);
+}));
 
 export default useRecipeModalUpdate;

@@ -22,15 +22,14 @@ export default async function getRecipes({
   myCreations = false,
   favorites = false,
 }: {
-  query?: RecipeQuery,
-  page?: number,
-  limit?: number,
-  currentUser?: SafeUser | null | undefined,
-  myCreations?: boolean,
-  favorites?: boolean
+  query?: RecipeQuery;
+  page?: number;
+  limit?: number;
+  currentUser?: SafeUser | null | undefined;
+  myCreations?: boolean;
+  favorites?: boolean;
 }) {
-
-  const skip = (page - 1) * limit
+  const skip = (page - 1) * limit;
 
   const typeOptions = query?.type ? query.type : undefined;
   const dietOptions = query?.diet ? query.diet : undefined;
@@ -50,7 +49,7 @@ export default async function getRecipes({
       // Add the type filter if typeOptions exists
       filters = {
         ...filters, // Merge existing filters
-        authorId: currentUser?.id
+        authorId: currentUser?.id,
       };
     }
 
@@ -59,8 +58,8 @@ export default async function getRecipes({
       filters = {
         ...filters, // Merge existing filters
         id: {
-          in: currentUser?.favoriteIds
-        }
+          in: currentUser?.favoriteIds,
+        },
       };
     }
 
@@ -164,7 +163,7 @@ export default async function getRecipes({
     }
 
     const recipesLength = await prisma.recipe.findMany({
-      where: filters, 
+      where: filters,
     });
 
     const recipes = await prisma.recipe.findMany({
@@ -194,10 +193,9 @@ export default async function getRecipes({
         ...recipe.reviews,
         createdAt: recipe.author.createdAt.toString(),
       },
-
     }));
 
-    return {safeRecipes, recipesQty: recipesLength.length};
+    return { safeRecipes, recipesQty: recipesLength.length };
   } catch (error) {
     console.error(error);
     throw error;

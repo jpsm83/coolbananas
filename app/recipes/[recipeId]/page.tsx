@@ -1,7 +1,3 @@
-// this is a server component
-// we cant use hooks to a server component
-// thats why we are not using useRouter to navigate to recipes pages
-
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getRecipeById from "@/app/actions/getRecipeById";
 import ClientOnly from "@/app/components/ClientOnly";

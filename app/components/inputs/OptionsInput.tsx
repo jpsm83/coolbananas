@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface OptionsInputProps {
   label: string;
@@ -9,9 +9,9 @@ interface OptionsInputProps {
 const OptionsInput: React.FC<OptionsInputProps> = ({
   label,
   selected,
-  onClick
+  onClick,
 }) => {
-  return ( 
+  return (
     <div
       onClick={() => onClick(label)}
       className={`
@@ -25,14 +25,12 @@ const OptionsInput: React.FC<OptionsInputProps> = ({
         hover:border-black
         transition
         cursor-pointer
-        ${selected ? 'border-orange-500' : 'border-neutral-200'}
+        ${selected ? "border-orange-500" : "border-neutral-200"}
       `}
     >
-      <div className="font-semibold">
-        {label}
-      </div>
+      <div className="font-semibold">{label}</div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default OptionsInput;

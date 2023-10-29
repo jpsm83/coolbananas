@@ -11,8 +11,8 @@ interface ReviewModalStore {
 const useReviewModal = create<ReviewModalStore>((set) => ({
   userReviewId: null,
   isOpen: false,
-  setReviewId: (userReviewId?) => set ({ userReviewId }),
-  onOpen: () => set({ isOpen: true  }),
+  setReviewId: (userReviewId?) => set({ userReviewId }),
+  onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false, userReviewId: null }),
 }));
 

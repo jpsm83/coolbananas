@@ -1,15 +1,13 @@
 "use client";
 
 import { toast } from "react-hot-toast";
-
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
 import Modal from "./Modal";
 import Heading from "../Heading";
 import useReplyModal from "@/app/hooks/useReplyModal";
-import { SafeRecipe, SafeReview, SafeUser } from "@/app/types";
+import { SafeRecipe, SafeUser } from "@/app/types";
 import axios from "axios";
 import Input from "../inputs/Input";
 
@@ -50,21 +48,24 @@ const ReplyModal: React.FC<ReplyModalProps> = ({ currentUser, recipe }) => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    if(currentUser?.id === recipe.authorId){
-    try {
-      setIsLoading(true);
-      const response = await axios.put(`/api/reviews/${replyModal.review?.id}`, data).then(() => {
-      toast.success("Review replyed!");
-      router.refresh();
-      reset();
-      replyModal.onClose();
-    });
-    } catch (error) {
-      toast.error("Something went wrong!");
-    } finally {
-      setIsLoading(false);
+    if (currentUser?.id === recipe.authorId) {
+      try {
+        setIsLoading(true);
+        const response = await axios
+          .put(`/api/reviews/${replyModal.review?.id}`, data)
+          .then(() => {
+            toast.success("Review replyed!");
+            router.refresh();
+            reset();
+            replyModal.onClose();
+          });
+      } catch (error) {
+        toast.error("Something went wrong!");
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }};
+  };
 
   const bodyContent = (
     <div className="flex flex-col gap-8">

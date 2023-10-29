@@ -53,7 +53,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ recipe, currentUser }) => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       setIsLoading(true);
-      if(reviewtModal.userReviewId){
+      if (reviewtModal.userReviewId) {
         await axios.put(`/api/reviews/${reviewtModal.userReviewId}`, data);
       } else {
         await axios.post("/api/reviews", data);

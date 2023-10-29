@@ -8,7 +8,6 @@ import Heading from "../Heading";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-
 import StepDescription from "./recipes_popups/StepDescription";
 import StepType from "./recipes_popups/StepType";
 import StepDiet from "./recipes_popups/StepDiet";

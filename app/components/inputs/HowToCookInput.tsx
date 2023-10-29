@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+'use client';
+
+import { useState, useEffect } from "react";
 
 interface HowToCookInputProps {
   id: string;
@@ -48,16 +50,16 @@ const HowToCookInputs: React.FC<HowToCookInputProps> = ({
         </label>
       </div>
       <button
-          onClick={handleAddClick}
-          disabled={isSaveButtonDisabled}
-          className={`relative w-full rounded-lg text-xl font-bold text-white transition ${
-            isSaveButtonDisabled
-              ? "bg-gray-500 opacity-80 hover:opacity-100 cursor-not-allowed"
-              : "bg-green-800 opacity-80 hover:opacity-100 cursor-pointer"
-          }`}
-        >
-          Add
-        </button>
+        onClick={handleAddClick}
+        disabled={isSaveButtonDisabled}
+        className={`relative w-full rounded-lg text-xl font-bold text-white transition ${
+          isSaveButtonDisabled
+            ? "bg-gray-500 opacity-80 hover:opacity-100 cursor-not-allowed"
+            : "bg-green-800 opacity-80 hover:opacity-100 cursor-pointer"
+        }`}
+      >
+        Add
+      </button>
     </div>
   );
 };

@@ -28,12 +28,14 @@ const Input: React.FC<InputProps> = ({
   onClick,
   rowSize,
 }) => {
-
   const hasErrors = errors?.[id]; // Check if errors[id] exists
 
   return (
     <div className="w-full relative">
-      {id !== "description" && id !== "comment" && id !== 'content' && id !== 'reply' ? (
+      {id !== "description" &&
+      id !== "comment" &&
+      id !== "content" &&
+      id !== "reply" ? (
         <input
           id={id}
           disabled={disabled}
@@ -56,8 +58,8 @@ const Input: React.FC<InputProps> = ({
                 disabled:opacity-70
                 disabled:cursor-not-allowed
                 pl-4
-                ${hasErrors  ? "border-orange-500" : "border-neutral-300"}
-                ${hasErrors  ? "focus:border-orange-500" : "focus:border-black"}
+                ${hasErrors ? "border-orange-500" : "border-neutral-300"}
+                ${hasErrors ? "focus:border-orange-500" : "focus:border-black"}
               `}
         />
       ) : (
@@ -83,8 +85,8 @@ const Input: React.FC<InputProps> = ({
           disabled:opacity-70
           disabled:cursor-not-allowed
           pl-4
-          ${hasErrors  ? "border-orange-500" : "border-neutral-300"}
-          ${hasErrors  ? "focus:border-orange-500" : "focus:border-black"}
+          ${hasErrors ? "border-orange-500" : "border-neutral-300"}
+          ${hasErrors ? "focus:border-orange-500" : "focus:border-black"}
         `}
         />
       )}
@@ -103,7 +105,7 @@ const Input: React.FC<InputProps> = ({
           peer-placeholder-shown:translate-y-0 
           peer-focus:scale-75
           peer-focus:-translate-y-4
-          ${hasErrors  ? "text-orange-500" : "text-zinc-400"}
+          ${hasErrors ? "text-orange-500" : "text-zinc-400"}
         `}
       >
         {label}

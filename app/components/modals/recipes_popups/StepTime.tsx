@@ -26,10 +26,9 @@ const StepTime: React.FC<StepTimeProps> = ({
   register,
   setCustomValue,
 }) => {
-
   const handleChange = (valueCategory: string, value: number) => {
-    setCustomValue(valueCategory, value)
-  }
+    setCustomValue(valueCategory, value);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -64,8 +63,7 @@ const StepTime: React.FC<StepTimeProps> = ({
         subLabel="Minutes"
         disabled={isLoading}
         register={register}
-        onClick={() => handleChange("timeAdditional", timeAdditional)
-        }
+        onClick={() => handleChange("timeAdditional", timeAdditional)}
       />
       <TimeInput
         id="servings"

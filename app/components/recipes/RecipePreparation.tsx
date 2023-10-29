@@ -11,7 +11,7 @@ const RecipePreparation: React.FC<RecipePreparationProps> = ({ recipe }) => {
     <div className="flex flex-col gap-3 cursor-default">
       {/* advertise */}
       <div className="bg-gray-100 flex md:hidden justify-center p-8 font-bold text-gray-400">
-      A D V E R T I S E
+        A D V E R T I S I N G{" "}
       </div>
       <div className="flex flex-col md:flex-row justify-between w-full gap-4 px-4 md:px-0">
         <div className="flex flex-col gap-3 justify-between mt-4 w-full">

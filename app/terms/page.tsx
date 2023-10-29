@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Terms = () => {
+const TermsPage = () => {
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -129,12 +128,12 @@ const Terms = () => {
 
         <div className="text-justify">
           <h3 className="font-bold text-md md:text-lg drop-shadow-md">
-            1.6- Company's privacy police
+            1.6- Company&apos;s privacy police
           </h3>
           <p>
-            The Company's Privacy Policy outlines its policies regarding the
-            privacy of Registration Data and other data provided by the user or
-            collected by the Company.
+            The Company&apos;s Privacy Policy outlines its policies regarding
+            the privacy of Registration Data and other data provided by the user
+            or collected by the Company.
           </p>
         </div>
 
@@ -205,14 +204,14 @@ const Terms = () => {
             2.4- Ratings and reviews
           </h3>
           <p>
-            Users' ratings and reviews on our Services are not endorsed by the
-            Company and do not represent its views. The Company does not assume
-            liability for ratings or economic loss. Users must base ratings on
-            their first-hand experience, avoid providing reviews for businesses
-            with economic interests, do not submit reviews in exchange for
-            payment, and comply with the terms of the Agreement. If deemed to
-            diminish the integrity, the Company may exclude, prohibit, or remove
-            user content without notice.
+            Users&apos; ratings and reviews on our Services are not endorsed by
+            the Company and do not represent its views. The Company does not
+            assume liability for ratings or economic loss. Users must base
+            ratings on their first-hand experience, avoid providing reviews for
+            businesses with economic interests, do not submit reviews in
+            exchange for payment, and comply with the terms of the Agreement. If
+            deemed to diminish the integrity, the Company may exclude, prohibit,
+            or remove user content without notice.
           </p>
         </div>
 
@@ -252,9 +251,9 @@ const Terms = () => {
             3.2- Trademarks
           </h3>
           <p>
-            The Company's stylized name, trademarks, graphics, logos, service
-            marks, and trade names are its property and may not be used without
-            permission with third-party products or services. Users are
+            The Company&apos;s stylized name, trademarks, graphics, logos,
+            service marks, and trade names are its property and may not be used
+            without permission with third-party products or services. Users are
             prohibited from removing, altering, or obscuring these rights
             notices.
           </p>
@@ -286,7 +285,7 @@ const Terms = () => {
             gain unauthorized access to other computer systems through the
             Services, interfere with the proper functioning of the Services, or
             attempt to harm the Services in any way that could interfere with
-            any party's use or enjoyment of the Services.
+            any party&apos;s use or enjoyment of the Services.
           </p>
         </div>
 
@@ -310,11 +309,11 @@ const Terms = () => {
             The Services offer the functionality to embed videos on other
             websites or blog pages, along with the Player. This is done by
             providing the necessary HTML code to include on the page. The actual
-            video stream is served from the company's servers, but the embedded
-            video may be rendered to the visitor. Users must not alter the
-            Embedded Video, facilitate access through any other tool, and use it
-            for commercial purposes, provided it is not part of a service that
-            sells access to video content, used for software program
+            video stream is served from the company&apos;s servers, but the
+            embedded video may be rendered to the visitor. Users must not alter
+            the Embedded Video, facilitate access through any other tool, and
+            use it for commercial purposes, provided it is not part of a service
+            that sells access to video content, used for software program
             development, or contains advertising or promotional messages. Users
             must not block or disable the Player, and all metrics related to
             access and viewing must be credited to the website.
@@ -345,10 +344,10 @@ const Terms = () => {
           </h3>
           <p>
             The company acknowledges that the use of its services and products
-            is at the user's sole risk and are provided on an "as is" and "as
-            available" basis. The company disclaims all warranties,
-            representations, and conditions, including those regarding
-            availability, accuracy, timeliness, ms-delivery, and
+            is at the user&apos;s sole risk and are provided on an &quot;as
+            is&quot; and &quot;as available&quot; basis. The company disclaims
+            all warranties, representations, and conditions, including those
+            regarding availability, accuracy, timeliness, ms-delivery, and
             non-infringement. The company also assumes no responsibility for the
             timely delivery, deletion, ms-delivery, or failure to store any
             content, user communications, or personalization settings. The
@@ -404,9 +403,9 @@ const Terms = () => {
             4.6- Exclusions
           </h3>
           <p>
-            Some states' laws may not allow for the exclusion or limitation of
-            certain damages, so the aforementioned warranties, exclusions, and
-            limitations may not apply to you.
+            Some states&apos; laws may not allow for the exclusion or limitation
+            of certain damages, so the aforementioned warranties, exclusions,
+            and limitations may not apply to you.
           </p>
         </div>
 
@@ -415,7 +414,7 @@ const Terms = () => {
             4.7- Survival
           </h3>
           <p>
-            This section's provisions will remain in effect even after the
+            This section&apos;s provisions will remain in effect even after the
             termination of your Account, this Agreement, or access to the
             Services.
           </p>
@@ -430,8 +429,8 @@ const Terms = () => {
             5.1- Disclaimer
           </h3>
           <p>
-            The Services provide information on an "as is" basis, with no
-            guarantees for accuracy or quality. Users are responsible for
+            The Services provide information on an &quot;as is&quot; basis, with
+            no guarantees for accuracy or quality. Users are responsible for
             verifying the information for personal use and not for any errors or
             omissions.
           </p>
@@ -473,7 +472,7 @@ const Terms = () => {
             <li>
               a statement that the information in your notice is accurate and
               you are the copyright owner or authorized to act on the copyright
-              owner's behalf.
+              owner&apos;s behalf.
             </li>
           </ol>
         </div>
@@ -498,9 +497,9 @@ const Terms = () => {
           <p>
             You must provide your current email address for Company to receive
             notices and other purposes. If your last email is invalid or not
-            capable of delivering necessary notices, Company's dispatch of the
-            email will be effective. You can send notice to Dotdash Media Inc.
-            at their address.
+            capable of delivering necessary notices, Company&apos;s dispatch of
+            the email will be effective. You can send notice to Dotdash Media
+            Inc. at their address.
           </p>
         </div>
 
@@ -517,8 +516,8 @@ const Terms = () => {
             Company is not liable for delays or failures due to causes outside
             its control, such as acts of God, war, terrorism, or pandemics. The
             Agreement and your rights cannot be assigned, subcontracted,
-            delegated, or transferred without Company's prior written consent.
-            Any attempted assignment or transfer will be null and void.
+            delegated, or transferred without Company&apos;s prior written
+            consent. Any attempted assignment or transfer will be null and void.
           </p>
         </div>
 
@@ -550,4 +549,4 @@ const Terms = () => {
   );
 };
 
-export default Terms;
+export default TermsPage;

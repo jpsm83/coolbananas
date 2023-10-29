@@ -1,7 +1,6 @@
 "use client";
 
 import { SafeRecipe } from "@/app/types";
-import Image from "next/image";
 import { AiOutlineFieldTime, AiOutlineBulb } from "react-icons/ai";
 interface RecipeTipsTricksProps {
   recipe: SafeRecipe;
@@ -24,7 +23,7 @@ const RecipeTipsTricks: React.FC<RecipeTipsTricksProps> = ({ recipe }) => {
     <div className="flex flex-col gap-6 md:gap-10 cursor-default">
       {/* advertise */}
       <div className="bg-gray-100 flex md:hidden justify-center p-8 font-bold text-gray-400">
-      A D V E R T I S E
+        A D V E R T I S I N G{" "}
       </div>
       <div className="flex flex-col md:flex-row justify-between w-full gap-6 md:gap-10 px-4 md:px-0">
         <div className="flex flex-col gap-6 md:gap-10 justify-between w-full">

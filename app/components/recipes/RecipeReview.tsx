@@ -2,7 +2,7 @@
 
 import useReviewModal from "@/app/hooks/useReviewModal";
 import { SafeRecipe, SafeReview, SafeUser } from "@/app/types";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import ReviewCard from "./ReviewCard";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { toast } from "react-hot-toast";
@@ -21,7 +21,7 @@ const RecipeReview: React.FC<RecipeReviewProps> = ({
 }) => {
   const reviewModal = useReviewModal();
   const loginModal = useLoginModal();
-  
+
   const hasUserReviewed = reviews?.some(
     (review) => review.authorId === currentUser?.id && review.content
   );
@@ -31,34 +31,34 @@ const RecipeReview: React.FC<RecipeReviewProps> = ({
   );
 
   const userReviewId = () => {
-    if(reviews){
-      for(let i=0; i<reviews.length; i++){
+    if (reviews) {
+      for (let i = 0; i < reviews.length; i++) {
         if (reviews[i].authorId === currentUser?.id) {
           reviewModal.setReviewId(reviews[i].id);
-          return true
+          return true;
         }
       }
     }
-    return false
-  }
+    return false;
+  };
 
   const openReviewModal = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
     }
-    if(!userReviewId()){
-      toast("First rate it please!", {icon: '🍌🍌🍌🍌🍌'});
-      return
+    if (!userReviewId()) {
+      toast("First rate it please!", { icon: "🍌🍌🍌🍌🍌" });
+      return;
     }
     if (hasUserReviewed) {
       toast.error("You already reviewed this recipe!");
     } else {
-      userReviewId()
+      userReviewId();
       // @ts-ignore
       reviewModal.onOpen();
     }
   }, [currentUser, loginModal, reviewModal]);
-  
+
   const contentCount = () => {
     let contentCount = 0;
     if (reviews && reviews.length > 0) {

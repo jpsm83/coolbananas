@@ -1,7 +1,7 @@
 "use client";
 
 import Heading from "../../Heading";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import Input from "../../inputs/Input";
 import { SafeUser } from "@/app/types";
 
@@ -20,10 +20,9 @@ const StepName: React.FC<StepNameProps> = ({
   register,
   setCustomValue,
 }) => {
-
   const handleChange = () => {
-    setCustomValue("name", name)
-  }
+    setCustomValue("name", name);
+  };
   return (
     <div className="flex flex-col gap-8">
       <Heading

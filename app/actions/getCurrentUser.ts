@@ -1,5 +1,3 @@
-// this is an action for a server component, not an api call
-
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -28,12 +26,11 @@ export default async function getCurrentUser() {
     }
 
     return {
-    ...currentUser,
-    createdAt: currentUser.createdAt.toISOString(),
-    updatedAt: currentUser.updatedAt?.toISOString(),
-    emailVerified: currentUser.emailVerified?.toISOString() || null,
+      ...currentUser,
+      createdAt: currentUser.createdAt.toISOString(),
+      updatedAt: currentUser.updatedAt?.toISOString(),
+      emailVerified: currentUser.emailVerified?.toISOString() || null,
     };
-
   } catch (error: any) {
     return null;
   }

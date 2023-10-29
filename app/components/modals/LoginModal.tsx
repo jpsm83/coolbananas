@@ -5,10 +5,8 @@ import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
@@ -90,12 +88,6 @@ const LoginModal = () => {
         label="Continue with Google"
         image="/images/lg_google.webp"
         onClick={() => signIn("google")}
-      />
-      <Button
-        outline
-        label="Continue with Facebook"
-        image="/images/lg_facebook.png"
-        onClick={() => signIn("facebook")}
       />
       <div
         className="

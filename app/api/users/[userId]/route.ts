@@ -54,7 +54,7 @@ export async function PUT(request: Request) {
       throw new Error("User not found");
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12)
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     if (user) {
       // @ts-ignore

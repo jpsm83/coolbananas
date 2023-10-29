@@ -42,12 +42,9 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({ recipe, currentUser }) => {
   };
 
   return (
-    <div
-      className="flex flex-col gap-4 cursor-default"
-      id="top-of-recipe-page"
-    >
+    <div className="flex flex-col gap-4 cursor-default" id="top-of-recipe-page">
       <div className="bg-gray-100 flex md:hidden justify-center p-8 font-bold text-gray-400">
-      A D V E R T I S E
+        A D V E R T I S I N G{" "}
       </div>
       <div className="flex flex-row justify-between px-4 md:px-0">
         <div className="text-xl md:text-2xl lg:text-4xl font-bold text-orange-500">
@@ -88,7 +85,6 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({ recipe, currentUser }) => {
         )}
       </div>
 
-      
       <div className="flex flex-row justify-between flex-wrap mt-4 px-4 md:px-0">
         <div>
           <Image
@@ -103,7 +99,8 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({ recipe, currentUser }) => {
         <div>
           <div className="text-sm">
             {/* @ts-ignore */}
-            Masterpiece by <span className="font-bold">{recipe.author.name}</span>
+            Masterpiece by {/* @ts-ignore */}
+            <span className="font-bold">{recipe.author.name}</span>
           </div>
           <div className="text-sm">Created at {formattedDate}</div>
         </div>

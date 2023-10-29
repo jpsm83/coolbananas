@@ -17,7 +17,6 @@ const StepCuisine: React.FC<StepCuisineProps> = ({
   currentUser,
   setCustomValue,
 }) => {
-
   const handleChange = (cuisine: object) => {
     setCustomValue("cuisine", cuisine === null ? {} : cuisine);
   };

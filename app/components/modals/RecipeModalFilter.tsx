@@ -4,7 +4,6 @@ import useFilters from "@/app/hooks/useFilters";
 import Modal from "./Modal";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-
 import StepType from "./recipes_popups/StepType";
 import StepDiet from "./recipes_popups/StepDiet";
 import StepCuisine from "./recipes_popups/StepCuisine";

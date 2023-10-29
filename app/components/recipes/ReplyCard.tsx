@@ -1,7 +1,7 @@
 "use client";
 
 import { SafeRecipe, SafeReview, SafeUser } from "@/app/types";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -23,7 +23,7 @@ const ReplyCard: React.FC<ReplyCardProps> = ({
   const deleteReply = useCallback(() => {
     if (currentUser?.id === recipe.authorId) {
       try {
-        const data = {reply: null}
+        const data = { reply: null };
         axios.put(`/api/reviews/${review?.id}`, data).then(() => {
           toast.success("Reply deleted!");
           router.refresh();

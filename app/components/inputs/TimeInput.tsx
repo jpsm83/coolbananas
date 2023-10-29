@@ -21,11 +21,13 @@ const TimeInput: React.FC<TimeInputProps> = ({
   disabled,
   register,
   required,
-  onClick
+  onClick,
 }) => {
   return (
-    <div className="flex justify-between gap-4
-">
+    <div
+      className="flex justify-between gap-4
+"
+    >
       <label
         className="
         w-full

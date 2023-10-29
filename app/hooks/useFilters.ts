@@ -12,10 +12,22 @@ interface RecipeModalFilterStore {
 }
 
 const useFilters = create<RecipeModalFilterStore>((set) => ({
-  dataFilter: {type: [], diet: [], cuisine: {}, season: [], method: [], maxHours: 0, maxMinutes: 0, ingredients: '', allergens: [], events: [], ratings: 0},
+  dataFilter: {
+    type: [],
+    diet: [],
+    cuisine: {},
+    season: [],
+    method: [],
+    maxHours: 0,
+    maxMinutes: 0,
+    ingredients: "",
+    allergens: [],
+    events: [],
+    ratings: 0,
+  },
   category: null,
   isOpen: false,
-  url: '',
+  url: "",
   onOpen: (category?) => set({ isOpen: true, category }),
   onClose: () => set({ isOpen: false, category: null }),
   setData: (dataFilter?) => set({ dataFilter }),

@@ -11,7 +11,7 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ recipe }) => {
     <div className="flex flex-col gap-6 md:gap-10 cursor-default">
       {/* advertise */}
       <div className="bg-gray-100 flex md:hidden justify-center p-8 font-bold text-gray-400">
-      A D V E R T I S E
+        A D V E R T I S I N G{" "}
       </div>
       {/* ingredients */}
       <div className="flex flex-col w-full px-4 md:px-0">

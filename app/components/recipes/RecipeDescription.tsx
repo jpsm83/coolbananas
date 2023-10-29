@@ -85,7 +85,9 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
               {recipe[category].map((item: string, i: number) => (
                 <span
                   key={i}
-                  className={`font-bold ${category === "allergens" && "text-red-500"}`}
+                  className={`font-bold ${
+                    category === "allergens" && "text-red-500"
+                  }`}
                 >
                   {item}
                   {i === recipe[category].length - 1 ? "." : ""}
@@ -99,19 +101,27 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
               <div className="flex flex-row gap-4 mt-4 flex-wrap justify-center">
                 <PiFlowerTulip
                   size={40}
-                  color={recipe.season.includes("Spring") ? "#efb923" : "#d9d9d9"}
+                  color={
+                    recipe.season.includes("Spring") ? "#efb923" : "#d9d9d9"
+                  }
                 />
                 <BsSun
                   size={40}
-                  color={recipe.season.includes("Summer") ? "#efb923" : "#d9d9d9"}
+                  color={
+                    recipe.season.includes("Summer") ? "#efb923" : "#d9d9d9"
+                  }
                 />
                 <GiFallingLeaf
                   size={40}
-                  color={recipe.season.includes("Autumn") ? "#efb923" : "#d9d9d9"}
+                  color={
+                    recipe.season.includes("Autumn") ? "#efb923" : "#d9d9d9"
+                  }
                 />
                 <BsSnow3
                   size={40}
-                  color={recipe.season.includes("Winter") ? "#efb923" : "#d9d9d9"}
+                  color={
+                    recipe.season.includes("Winter") ? "#efb923" : "#d9d9d9"
+                  }
                 />
               </div>
             )}
@@ -134,11 +144,13 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
         )}
       </div>
     );
-      };
+  };
 
   return (
     <div className="flex flex-col cursor-default">
-      <div className="font-bold text-lg mb-8 text-justify px-4 md:px-0">{recipe.description}</div>
+      <div className="font-bold text-lg mb-8 text-justify px-4 md:px-0">
+        {recipe.description}
+      </div>
       <div className="flex justify-center overflow-hidden w-600 h-400">
         <ImageSlider recipeImages={recipe.imageSrc} />
       </div>

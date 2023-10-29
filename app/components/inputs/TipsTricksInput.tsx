@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 
 interface TipsTricksInputProps {
   id: string;
@@ -47,7 +49,7 @@ const TipsTricksInput: React.FC<TipsTricksInputProps> = ({
         </label>
       </div>
       <div className="flex mt-2 h-8">
-      <button
+        <button
           onClick={handleAddClick}
           disabled={isSaveButtonDisabled}
           className={`relative w-full rounded-lg text-xl font-bold text-white transition ${

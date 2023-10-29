@@ -1,5 +1,3 @@
-// this is an action for a server component, not an api call
-
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {

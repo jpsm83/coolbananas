@@ -14,11 +14,11 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
-    
+
     if (!currentUser) {
       throw new Error("Current user not found!");
     }
-1
+    1;
     const body = await request.json();
 
     const recipe = await prisma.recipe.create({

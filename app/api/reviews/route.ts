@@ -3,13 +3,13 @@ import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
 export async function GET(request: Request) {
-  const recipeId = request.url.split('recipeId=')[1]
-    try {
-      const reviews = await prisma.review.findMany({
-        where: {
-          recipeId: recipeId
-        },
-      });
+  const recipeId = request.url.split("recipeId=")[1];
+  try {
+    const reviews = await prisma.review.findMany({
+      where: {
+        recipeId: recipeId,
+      },
+    });
 
     return NextResponse.json(reviews);
   } catch (error) {
@@ -29,14 +29,14 @@ export async function POST(request: Request) {
 
     const { ratingValue, recipeId } = body;
 
-    if (!ratingValue || !recipeId ) {
+    if (!ratingValue || !recipeId) {
       throw new Error("Invalid body credentials!");
     }
 
     const reviewRecipe = await prisma.review.create({
       data: {
         authorId: currentUser.id,
-        ...body
+        ...body,
       },
     });
 

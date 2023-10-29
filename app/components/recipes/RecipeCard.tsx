@@ -90,7 +90,9 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, currentUser }) => {
           <div className="absolute bottom-0 left-0 right-0 p-1 flex items-center justify-between bg-gray-900/40">
             <div className="flex items-center gap-3">
               <span className={countryFlag}></span>
-              <div className="font-bold text-white whitespace-nowrap overflow-hidden">{country?.value}</div>
+              <div className="font-bold text-white whitespace-nowrap overflow-hidden">
+                {country?.value}
+              </div>
             </div>
           </div>
         </div>

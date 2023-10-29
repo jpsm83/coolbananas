@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import OptionsInput from "../../inputs/OptionsInput";
 import { categories } from "@/app/dataValuesVariables";
 import Heading from "../../Heading";
@@ -37,11 +36,11 @@ const StepAllergens: React.FC<StepAllergensProps> = ({
 
   return (
     <div className="flex flex-col gap-8">
-            {!headerOff && (
-      <Heading
-        title={`Careful, if you are a vampire, dont eat garlic ${currentUser?.name}`}
-        subtitle="Select all that apply ONLY if you know. Otherways leave in blank"
-      />
+      {!headerOff && (
+        <Heading
+          title={`Careful, if you are a vampire, dont eat garlic ${currentUser?.name}`}
+          subtitle="Select all that apply ONLY if you know. Otherways leave in blank"
+        />
       )}
       <div
         className="
@@ -53,16 +52,16 @@ const StepAllergens: React.FC<StepAllergensProps> = ({
                     overflow-y-auto
                   "
       >
-            {categories.map((category) => {
-            if (category.label === "Allergens") {
-              return category.options.sort().map((item) => (
-                <div key={item} className="col-span-1">
-                  <OptionsInput
-                    key={item}
-                    onClick={() => handleTypeClick(item)}
-                    selected={allergens.includes(item as never)}
-                    label={item}
-                  />
+        {categories.map((category) => {
+          if (category.label === "Allergens") {
+            return category.options.sort().map((item) => (
+              <div key={item} className="col-span-1">
+                <OptionsInput
+                  key={item}
+                  onClick={() => handleTypeClick(item)}
+                  selected={allergens.includes(item as never)}
+                  label={item}
+                />
               </div>
             ));
           }

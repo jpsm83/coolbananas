@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import TimeInput from "../../inputs/TimeInput";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import toast from "react-hot-toast";

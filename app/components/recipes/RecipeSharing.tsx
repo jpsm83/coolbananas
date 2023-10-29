@@ -1,5 +1,6 @@
+'use client';
+
 import { SafeRecipe } from "@/app/types";
-import React from "react";
 import {
   TelegramShareButton,
   TwitterShareButton,

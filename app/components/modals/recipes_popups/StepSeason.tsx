@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import OptionsInput from "../../inputs/OptionsInput";
 import { categories } from "@/app/dataValuesVariables";
 import Heading from "../../Heading";

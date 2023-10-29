@@ -66,8 +66,8 @@ const useRating = ({ recipe, currentUser }: IUseRating) => {
       toast.error("Something went wrong.");
     }
   };
-  
-  const averageRecipeRate = async() => {
+
+  const averageRecipeRate = async () => {
     const response = await axios.get(`/api/reviews?recipeId=${recipe.id}`);
     const allReviews = response.data;
 
@@ -85,7 +85,7 @@ const useRating = ({ recipe, currentUser }: IUseRating) => {
     } catch (error) {
       console.error("Update rateAvg error:", error);
     }
-  }
+  };
 
   return { currentUserRating, rateClick, averageRecipeRate };
 };
