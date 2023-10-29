@@ -17,7 +17,7 @@ interface StepNutricionProps {
   salt: number;
   saturates: number;
   register: UseFormRegister<FieldValues>;
-  setCustomValue: (value: string, photos: string | number | undefined) => void;
+  setCustomValue: (value: string, nutricion: string | number | undefined) => void;
 }
 
 const StepNutricion: React.FC<StepNutricionProps> = ({

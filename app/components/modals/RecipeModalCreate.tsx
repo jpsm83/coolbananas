@@ -57,7 +57,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
 }) => {
   const router = useRouter();
   const recipeModalCreate = useRecipeModalCreate();
-  const [step, setStep] = useState(STEPS.LEGAL);
+  const [step, setStep] = useState(STEPS.PHOTO);
   const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, setValue, watch, reset } =
@@ -341,6 +341,8 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       </div>
     );
   }
+  
+  console.log(imageSrc);
 
   if (step === STEPS.DIET) {
     modalTitle = "Recipe diets";

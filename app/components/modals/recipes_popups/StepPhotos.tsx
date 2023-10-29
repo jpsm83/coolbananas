@@ -16,16 +16,21 @@ const StepPhotos: React.FC<StepPhotosProps> = ({
   currentUser,
   setCustomValue,
 }) => {
+
   const handleImageUpload = (e: any) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      // @ts-ignore
-      setCustomValue("imageSrc", [...imageSrc, reader.result]);
-    };
-    reader.onerror = (error) => {
-      console.log(error);
-    };
+    e.preventDefault();
+    const image = e.target.files[0];
+    setCustomValue("imageSrc", [...imageSrc, image]);
+
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(e.target.files[0]);
+  //   reader.onload = () => {
+  //     // @ts-ignore
+  //     setCustomValue("imageSrc", [...imageSrc, reader.result]);
+  //   };
+  //   reader.onerror = (error) => {
+  //     console.log(error);
+  //   };
   };
 
   const handleDeleteImage = (index: number) => {
@@ -47,7 +52,7 @@ const StepPhotos: React.FC<StepPhotosProps> = ({
         onChange={(e) => handleImageUpload(e)}
       />
 
-      <div className="flex flex-wrap justify-center gap-4">
+      {/* <div className="flex flex-wrap justify-center gap-4">
         {imageSrc.map((image: any, index: number) => (
           <div key={index} className="relative">
             <div className="rounded-md overflow-hidden">
@@ -70,7 +75,7 @@ const StepPhotos: React.FC<StepPhotosProps> = ({
             </button>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

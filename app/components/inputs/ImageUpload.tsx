@@ -2,7 +2,7 @@
 
 interface InputProps {
   id: string;
-  label: string;
+  label?: string;
   value?: string | number | string[];
   type?: string;
   disabled?: boolean;
