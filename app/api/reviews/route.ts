@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-export const dynamic = 'force-dynamic';
-
 export async function GET(request: Request) {
   const recipeId = request.url.split('recipeId=')[1]
     try {

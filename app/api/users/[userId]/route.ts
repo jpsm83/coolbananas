@@ -3,8 +3,6 @@ import bcrypt from "bcrypt";
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-export const dynamic = 'force-dynamic';
-
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export async function GET(request: Request) {
