@@ -59,7 +59,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
 }) => {
   const router = useRouter();
   const recipeModalUpdate = useRecipeModalUpdate();
-  const [step, setStep] = useState(STEPS.LEGAL);
+  const [step, setStep] = useState(STEPS.PHOTO);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -74,6 +74,8 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       name: recipe?.name,
       description: recipe?.description,
       imageSrc: recipe?.imageSrc,
+      imageFileToAdd: [],
+      imageUrlToDelete: [],
       type: recipe?.type,
       diet: recipe?.diet,
       cuisine: recipe?.cuisine,
@@ -104,6 +106,8 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const name = watch("name");
   const description = watch("description");
   const imageSrc = watch("imageSrc");
+  const imageFileToAdd = watch("imageFileToAdd");
+  const imageUrlToDelete = watch("imageUrlToDelete");
   const type = watch("type");
   const diet = watch("diet");
   const cuisine = watch("cuisine");
@@ -487,6 +491,56 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     );
   }
 
+  const deleteImages = async (imageUrlToDelete: string[]) => {
+    try {
+      const deleteResponse = await fetch("/api/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ urls: imageUrlToDelete }),
+      });
+
+      if (deleteResponse.ok) {
+        const deleteData = await deleteResponse.json();
+        console.log("Deletion success:", deleteData);
+        return deleteData; // Return the deletion response
+      } else {
+        console.error("Failed to delete images");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
+  const uploadImages = async (imageFileToAdd: []) => {
+    try {
+      const formData = new FormData();
+      imageFileToAdd.forEach((image) => {
+        formData.append("images", image);
+      });
+
+      const uploadResponse = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      console.log(uploadResponse);
+      if (uploadResponse.ok) {
+        const uploadData = await uploadResponse.json();
+        console.log("Upload success:", uploadData);
+        return uploadData; // Return the upload response
+      } else {
+        console.error("Failed to upload images");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
   if (step === STEPS.PHOTO) {
     modalTitle = "Recipe main photo";
     bodyContent = (
@@ -494,8 +548,11 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         <StepPhotos
           currentUser={currentUser}
           imageSrc={imageSrc}
+          imageFileToAdd={imageFileToAdd}
+          imageUrlToDelete={imageUrlToDelete}
           setCustomValue={setCustomValue}
         />
+        <button onClick={() => uploadImages(imageFileToAdd)}>upload</button>
       </div>
     );
   }

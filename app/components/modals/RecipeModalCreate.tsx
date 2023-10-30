@@ -66,6 +66,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         name: "",
         description: "",
         imageSrc: [],
+        imageFileToAdd: [],
         type: [],
         diet: [],
         cuisine: {},
@@ -98,6 +99,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const name = watch("name");
   const description = watch("description");
   const imageSrc = watch("imageSrc");
+  const imageFileToAdd = watch("imageFileToAdd");
   const type = watch("type");
   const diet = watch("diet");
   const cuisine = watch("cuisine");
@@ -341,8 +343,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       </div>
     );
   }
-  
-  console.log(imageSrc);
 
   if (step === STEPS.DIET) {
     modalTitle = "Recipe diets";
@@ -496,6 +496,23 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     );
   }
 
+  const uploadImages = async (imageFileToAdd: []) => {
+    try {
+      const formData = new FormData();
+      imageFileToAdd.forEach((image) => {
+        formData.append("images", image);
+      });
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (step === STEPS.PHOTO) {
     modalTitle = "Recipe main photo";
     bodyContent = (
@@ -503,8 +520,10 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         <StepPhotos
           currentUser={currentUser}
           imageSrc={imageSrc}
+          imageFileToAdd={imageFileToAdd}
           setCustomValue={setCustomValue}
         />
+        <button onClick={() => uploadImages(imageFileToAdd)}>upload</button>
       </div>
     );
   }
