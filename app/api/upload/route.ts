@@ -1,6 +1,7 @@
 import { writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
+import path from "path";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -20,25 +21,26 @@ export async function POST(request: Request) {
   }
 
   const uploadPreset = "yfhyp9my";
-  const uploadResponses = [];
+  const uploadResponses: any[] = [];
 
   for (const file of files) {
     // @ts-ignore
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    // @ts-ignore
-    const fileName = file.name;
 
-    await writeFile(fileName, buffer);
-
-    const response = await cloudinary.uploader.upload(fileName, {
-      upload_preset: uploadPreset,
+    const response = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream({ upload_preset: uploadPreset }, (error, result) => {
+          if (error) {
+            reject(error);
+          }
+          resolve(result);
+        })
+        .end(buffer);
     });
-
     uploadResponses.push(response);
+    // @ts-ignore
   }
-
-  console.log(uploadResponses);
   return NextResponse.json({ success: true, uploadResponses });
 }
 

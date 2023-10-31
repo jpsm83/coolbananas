@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import useRecipeModalCreate from "@/app/hooks/useRecipeModalCreate";
 import Modal from "./Modal";
 import { useMemo, useState } from "react";
@@ -57,7 +57,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
 }) => {
   const router = useRouter();
   const recipeModalCreate = useRecipeModalCreate();
-  const [step, setStep] = useState(STEPS.PHOTO);
+  const [step, setStep] = useState(STEPS.LEGAL);
   const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, setValue, watch, reset } =
@@ -186,7 +186,11 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       toast.error("Add how to cook steps!");
       return;
     }
-    if (step === STEPS.PHOTO && imageSrc.length === 0) {
+    if (
+      step === STEPS.PHOTO &&
+      imageSrc.length === 0 &&
+      imageFileToAdd.length === 0
+    ) {
       toast.error("Add at least one photo!");
       return;
     }
@@ -202,10 +206,41 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     setStep((value) => value + 1);
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const createImagesSrc = async (
+    imageFileToAdd: File[]
+  ): Promise<AxiosResponse | null> => {
+    try {
+      const formData = new FormData();
+      imageFileToAdd.forEach((image) => {
+        formData.append("images", image);
+      });
+
+      const uploadResponse = await axios.post("/api/upload", formData);
+
+      if (uploadResponse.status === 200) {
+        uploadResponse.data.uploadResponses.forEach(
+          (response: any, index: number) => {
+            imageSrc.push(response.secure_url);
+          }
+        );
+        console.log(imageSrc);
+        return uploadResponse;
+      } else {
+        console.error("Failed to upload images");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (step !== STEPS.NUTRI) {
       return onNext();
     }
+
+    await createImagesSrc(imageFileToAdd);
 
     let listIngredientsNamesArray: string[] = [];
 
@@ -256,20 +291,19 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       createListIngredientsNamesArray();
       const request = axios
         .post("/api/recipes", createData)
-        .then(() => {
+        .then((response) => {
           toast.success("Recipe created!");
           reset();
           setStep(STEPS.LEGAL);
           recipeModalCreate.onClose();
           router.refresh();
-          router.push("/");
+          router.push(`/recipes/${response.data.id}`);
         })
         .catch(() => {
           toast.error("Something went wrong.");
         })
         .finally(() => {
           setIsLoading(false);
-          // router.push(`/recipes/${}`);
         });
     } catch (error) {
       console.log(error);
@@ -514,7 +548,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   };
 
   if (step === STEPS.PHOTO) {
-    modalTitle = "Recipe main photo";
+    modalTitle = "Recipe photos";
     bodyContent = (
       <div>
         <StepPhotos
@@ -523,7 +557,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           imageFileToAdd={imageFileToAdd}
           setCustomValue={setCustomValue}
         />
-        <button onClick={() => uploadImages(imageFileToAdd)}>upload</button>
       </div>
     );
   }

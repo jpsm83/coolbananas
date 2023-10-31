@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
 import Image from "next/image";
 
@@ -9,18 +9,23 @@ interface ImageSliderProps {
 }
 
 export function ImageSlider({ recipeImages }: ImageSliderProps) {
+  const [imagesUrls, setImagesUrls] = useState(recipeImages)
   const [imageIndex, setImageIndex] = useState(0);
 
+  useEffect(() => {
+    setImagesUrls(recipeImages)
+  }, [recipeImages])
+  
   function showNextImage() {
     setImageIndex((index) => {
-      if (index === recipeImages.length - 1) return 0;
+      if (index === imagesUrls.length - 1) return 0;
       return index + 1;
     });
   }
 
   function showPrevImage() {
     setImageIndex((index) => {
-      if (index === 0) return recipeImages.length - 1;
+      if (index === 0) return imagesUrls.length - 1;
       return index - 1;
     });
   }
@@ -28,7 +33,7 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
   return (
     <div className="relative">
       <div className="flex overflow-hidden">
-        {recipeImages.map((imageSrc, index) => (
+        {imagesUrls.map((imageSrc, index) => (
           <div
             key={index}
             className={`${
@@ -64,7 +69,7 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
         <ArrowBigRight className="stroke-white fill-gray-600" />
       </button>
       <div className="absolute flex justify-center w-full bottom-0 gap-1 pb-2">
-        {recipeImages.map((_, index) => (
+        {imagesUrls.map((_, index) => (
           <button
             key={index}
             className="cursor-pointer"

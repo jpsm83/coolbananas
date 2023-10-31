@@ -59,7 +59,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
 }) => {
   const router = useRouter();
   const recipeModalUpdate = useRecipeModalUpdate();
-  const [step, setStep] = useState(STEPS.PHOTO);
+  const [step, setStep] = useState(STEPS.LEGAL);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -183,10 +183,14 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       toast.error("Add how to cook steps!");
       return;
     }
-    // if (step === STEPS.PHOTO && imageSrc.length === 0) {
-    //   toast.error("Add at least one photo!");
-    //   return;
-    // }
+    if (
+      step === STEPS.PHOTO &&
+      imageSrc.length === 0 &&
+      imageFileToAdd.length === 0
+    ) {
+      toast.error("Add at least one photo!");
+      return;
+    }
     if (
       step === STEPS.VIDEO &&
       video.length > 0 &&
@@ -197,6 +201,59 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     }
 
     setStep((value) => value + 1);
+  };
+
+  const deleteImages = async (
+    imageUrlToDelete: string[]
+  ): Promise<AxiosResponse | null> => {
+    let publicIds: string[] = [];
+    imageUrlToDelete.forEach((url) => {
+      // @ts-ignore
+      publicIds.push(url.split("/").pop().split(".")[0]);
+    });
+    try {
+      const deleteResponse = await axios.delete("/api/upload", {
+        data: { publicIds: publicIds },
+      });
+      if (deleteResponse.status === 200) {
+        return deleteResponse;
+      } else {
+        console.error("Failed to delete images");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
+  const updateImagesSrc = async (
+    imageFileToAdd: File[]
+  ): Promise<AxiosResponse | null> => {
+    deleteImages(imageUrlToDelete);
+    try {
+      const formData = new FormData();
+      imageFileToAdd.forEach((image) => {
+        formData.append("images", image);
+      });
+
+      const uploadResponse = await axios.post("/api/upload", formData);
+
+      if (uploadResponse.status === 200) {
+        uploadResponse.data.uploadResponses.forEach(
+          (response: any, index: number) => {
+            imageSrc.push(response.secure_url);
+          }
+        );
+        return uploadResponse;
+      } else {
+        console.error("Failed to upload images");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -260,13 +317,13 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           toast.success("Recipe updated!");
           setStep(STEPS.LEGAL);
           recipeModalUpdate.onClose();
+          router.refresh();
         })
         .catch(() => {
           toast.error("Something went wrong.");
         })
         .finally(() => {
           setIsLoading(false);
-          router.push(`/recipes/${recipe?.id}`);
         });
     } catch (error) {
       console.log(error);
@@ -493,60 +550,8 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     );
   }
 
-  const deleteImages = async (imageUrlToDelete: string[]): 
-  Promise<AxiosResponse | null> => {
-    let publicIds: string[] = []
-    imageUrlToDelete.forEach(url => {
-      // @ts-ignore
-      publicIds.push(url.split("/").pop().split(".")[0])
-    });
-    try {
-      const deleteResponse = await axios.delete("/api/upload", {
-        data: { publicIds: publicIds },
-      });
-  
-      if (deleteResponse.status === 200) {
-        console.log("Deletion success:", deleteResponse.data);
-        return deleteResponse;
-      } else {
-        console.error("Failed to delete images");
-        return null;
-      }
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  };
-
-  const updateImagesSrc = async (imageFileToAdd: File[]): Promise<AxiosResponse | null> => {
-    deleteImages(imageUrlToDelete);
-    try {
-      const formData = new FormData();
-      imageFileToAdd.forEach((image) => {
-        formData.append("images", image);
-      });
-  
-      const uploadResponse = await axios.post("/api/upload", formData);
-  
-      if (uploadResponse.status === 200) {
-        
-        uploadResponse.data.uploadResponses.forEach((response: any, index: number) => {
-          imageSrc.push(response.secure_url);
-        });
-        console.log(imageSrc)
-        return uploadResponse;
-      } else {
-        console.error("Failed to upload images");
-        return null;
-      }
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  };
-
   if (step === STEPS.PHOTO) {
-    modalTitle = "Recipe main photo";
+    modalTitle = "Recipe photos";
     bodyContent = (
       <div>
         <StepPhotos
@@ -556,8 +561,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           imageUrlToDelete={imageUrlToDelete}
           setCustomValue={setCustomValue}
         />
-        <button onClick={() => deleteImages(imageUrlToDelete)}>delete</button>
-        <button onClick={() => updateImagesSrc(imageFileToAdd)}>upload</button>
       </div>
     );
   }
