@@ -26,7 +26,6 @@ export async function POST(request: Request) {
     // @ts-ignore
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-
     // @ts-ignore
     const fileName = file.name;
 
@@ -43,40 +42,30 @@ export async function POST(request: Request) {
   return NextResponse.json({ success: true, uploadResponses });
 }
 
-
-
 export async function DELETE(request: Request) {
   try {
-    const { urls } = await request.json();
+    const { publicIds } = await request.json();
     const deletionResponses = [];
-
-    for (const url of urls) {
-      const publicId = extractPublicIdFromUrl(url);
-
-      if (!publicId) {
-        return NextResponse.json({
-          success: false,
-          message: `Invalid URL provided: ${url}`,
-        });
-      }
-
-      const deletionResponse = await cloudinary.uploader.destroy(publicId);
-
+    for (const publicId of publicIds) {
+      const deletionResponse = await cloudinary.uploader.destroy(
+        `coolBananasRecipes/${publicId}`,
+        { resource_type: "image" }
+      );
+      console.log(deletionResponse);
       if (deletionResponse.result === "ok") {
         deletionResponses.push({
-          url,
+          publicId,
           success: true,
           message: "Image deleted successfully.",
         });
       } else {
         deletionResponses.push({
-          url,
+          publicId,
           success: false,
           message: "Failed to delete the image.",
         });
       }
     }
-
     return NextResponse.json({
       success: true,
       deletionResponses,

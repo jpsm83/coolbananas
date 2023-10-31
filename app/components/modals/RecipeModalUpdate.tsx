@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import useRecipeModalUpdate from "@/app/hooks/useRecipeModalUpdate";
 import Modal from "./Modal";
 import { useMemo, useState } from "react";
@@ -183,10 +183,10 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       toast.error("Add how to cook steps!");
       return;
     }
-    if (step === STEPS.PHOTO && imageSrc.length === 0) {
-      toast.error("Add at least one photo!");
-      return;
-    }
+    // if (step === STEPS.PHOTO && imageSrc.length === 0) {
+    //   toast.error("Add at least one photo!");
+    //   return;
+    // }
     if (
       step === STEPS.VIDEO &&
       video.length > 0 &&
@@ -199,10 +199,12 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     setStep((value) => value + 1);
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (step !== STEPS.NUTRI) {
       return onNext();
     }
+
+    await updateImagesSrc(imageFileToAdd);
 
     let listIngredientsNamesArray: string[] = [];
 
@@ -264,7 +266,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         })
         .finally(() => {
           setIsLoading(false);
-          router.refresh();
+          router.push(`/recipes/${recipe?.id}`);
         });
     } catch (error) {
       console.log(error);
@@ -491,20 +493,21 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     );
   }
 
-  const deleteImages = async (imageUrlToDelete: string[]) => {
+  const deleteImages = async (imageUrlToDelete: string[]): 
+  Promise<AxiosResponse | null> => {
+    let publicIds: string[] = []
+    imageUrlToDelete.forEach(url => {
+      // @ts-ignore
+      publicIds.push(url.split("/").pop().split(".")[0])
+    });
     try {
-      const deleteResponse = await fetch("/api/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ urls: imageUrlToDelete }),
+      const deleteResponse = await axios.delete("/api/upload", {
+        data: { publicIds: publicIds },
       });
-
-      if (deleteResponse.ok) {
-        const deleteData = await deleteResponse.json();
-        console.log("Deletion success:", deleteData);
-        return deleteData; // Return the deletion response
+  
+      if (deleteResponse.status === 200) {
+        console.log("Deletion success:", deleteResponse.data);
+        return deleteResponse;
       } else {
         console.error("Failed to delete images");
         return null;
@@ -515,22 +518,23 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     }
   };
 
-  const uploadImages = async (imageFileToAdd: []) => {
+  const updateImagesSrc = async (imageFileToAdd: File[]): Promise<AxiosResponse | null> => {
+    deleteImages(imageUrlToDelete);
     try {
       const formData = new FormData();
       imageFileToAdd.forEach((image) => {
         formData.append("images", image);
       });
-
-      const uploadResponse = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-      console.log(uploadResponse);
-      if (uploadResponse.ok) {
-        const uploadData = await uploadResponse.json();
-        console.log("Upload success:", uploadData);
-        return uploadData; // Return the upload response
+  
+      const uploadResponse = await axios.post("/api/upload", formData);
+  
+      if (uploadResponse.status === 200) {
+        
+        uploadResponse.data.uploadResponses.forEach((response: any, index: number) => {
+          imageSrc.push(response.secure_url);
+        });
+        console.log(imageSrc)
+        return uploadResponse;
       } else {
         console.error("Failed to upload images");
         return null;
@@ -552,7 +556,8 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           imageUrlToDelete={imageUrlToDelete}
           setCustomValue={setCustomValue}
         />
-        <button onClick={() => uploadImages(imageFileToAdd)}>upload</button>
+        <button onClick={() => deleteImages(imageUrlToDelete)}>delete</button>
+        <button onClick={() => updateImagesSrc(imageFileToAdd)}>upload</button>
       </div>
     );
   }
