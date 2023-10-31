@@ -15,7 +15,7 @@ interface RecipeDescriptionProps {
 }
 
 const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
-  const testing = (category: string) => {
+  const optionCards = (category: string) => {
     let title;
     let description;
     let icon;
@@ -151,9 +151,7 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
       <div className="font-bold text-lg mb-8 text-justify px-4 md:px-0">
         {recipe.description}
       </div>
-      <div className="flex justify-center overflow-hidden w-600 h-400">
         <ImageSlider recipeImages={recipe.imageSrc} />
-      </div>
       <hr className="border-orange-500 my-10" />
       <div
         className="
@@ -167,12 +165,12 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
             px-4 md:px-0
 "
       >
-        {testing("type")}
-        {testing("diet")}
-        {testing("season")}
-        {testing("method")}
-        {testing("allergens")}
-        {testing("events")}
+        {optionCards("type")}
+        {optionCards("diet")}
+        {optionCards("season")}
+        {optionCards("method")}
+        {optionCards("allergens")}
+        {optionCards("events")}
       </div>
     </div>
   );

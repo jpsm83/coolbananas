@@ -38,7 +38,7 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
             key={index}
             className={`${
               imageIndex === index ? "opacity-100" : "opacity-0"
-            } flex justify-center object-cover items-center w-full max-h-400 flex-shrink-0 flex-grow-0 transition-transform ease-in-out duration-300`}
+            } flex justify-center items-center w-full flex-shrink-0 transition-transform ease-in-out duration-300`}
             style={{
               transform: `translateX(-${100 * imageIndex}%)`,
             }}
@@ -48,9 +48,10 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
               src={imageSrc}
               width={600}
               height={600}
-              className="h-full w-full aspect-[4/3]"
+              className="w-full aspect-[4/3]"
               style={{
                 objectFit: "cover",
+                objectPosition: "bottom"
               }}
             />
           </div>
