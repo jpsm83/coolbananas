@@ -223,7 +223,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
             imageSrc.push(response.secure_url);
           }
         );
-        console.log(imageSrc);
         return uploadResponse;
       } else {
         console.error("Failed to upload images");

@@ -1,8 +1,10 @@
 "use client";
 
+import { ChangeEvent } from "react"
+
 interface ImageInputProps {
   type?: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   accept?: string;
   disable: boolean;
 }
