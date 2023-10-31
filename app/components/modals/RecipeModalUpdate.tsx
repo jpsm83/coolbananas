@@ -230,7 +230,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const updateImagesSrc = async (
     imageFileToAdd: File[]
   ): Promise<AxiosResponse | null> => {
-    deleteImages(imageUrlToDelete);
+    await deleteImages(imageUrlToDelete);
     try {
       const formData = new FormData();
       imageFileToAdd.forEach((image) => {

@@ -59,7 +59,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ currentUser }) => {
         await axios
           .put(`/api/users/${currentUser?.id}`, data)
           .then((response) => {
-            console.log(response.data);
             toast.success("User Updated!");
             editUserModal.onClose();
           })

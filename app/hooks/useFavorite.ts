@@ -36,9 +36,9 @@ const useFavorite = ({ recipeId, currentUser }: IUseFavorite) => {
         let request;
 
         if (hasFavorited) {
-          request = () => axios.delete(`/api/favorites/${recipeId}`);
+          request = async() => await axios.delete(`/api/favorites/${recipeId}`);
         } else {
-          request = () => axios.post(`/api/favorites/${recipeId}`);
+          request = async() => await axios.post(`/api/favorites/${recipeId}`);
         }
 
         await request();

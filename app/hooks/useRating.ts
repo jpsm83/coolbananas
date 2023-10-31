@@ -37,13 +37,13 @@ const useRating = ({ recipe, currentUser }: IUseRating) => {
     try {
       // Find the index of the rating object with the current user's ID
       // @ts-ignore
-      const userRatingIndex = recipe.reviews.findIndex(
+      const userRatingIndex = await recipe.reviews.findIndex(
         (rating: any) => rating.authorId === currentUser?.id
       );
       // Create a copy of the reviews array to avoid direct mutation
       if (userRatingIndex !== -1) {
         // @ts-ignore
-        const recipeReview = recipe.reviews[userRatingIndex];
+        const recipeReview = await recipe.reviews[userRatingIndex];
         let updatedRatings = {
           ratingValue: ratingValue,
         };

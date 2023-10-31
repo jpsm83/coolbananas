@@ -1,7 +1,5 @@
-import { writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
-import path from "path";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
