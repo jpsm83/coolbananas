@@ -67,8 +67,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     handleSubmit,
     setValue,
     watch,
-    formState: { errors },
-    reset,
   } = useForm<FieldValues>({
     defaultValues: {
       name: recipe?.name,
@@ -146,6 +144,14 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   };
 
   const onNext = () => {
+    if (step === STEPS.NAME && !name) {
+      toast.error("Your recipes needs a name!");
+      return;
+    }
+    if (step === STEPS.DESCRIPTION && !description) {
+      toast.error("Describe your recipe!");
+      return;
+    }
     if (step === STEPS.TYPE && type.length === 0) {
       toast;
       toast.error("Select at least one type!");
@@ -173,6 +179,10 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     }
     if (step === STEPS.INGREDIENTS && ingredients.length === 0) {
       toast.error("Add some ingredients!");
+      return;
+    }
+    if (step === STEPS.TIPS && tipsTricks.length === 0) {
+      toast.error("Add some tips & tricks or comment!");
       return;
     }
     if (step === STEPS.PREP && preparation.length === 0) {
@@ -238,7 +248,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       });
 
       const uploadResponse = await axios.post("/api/upload", formData);
-
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(
           (response: any, index: number) => {

@@ -1,4 +1,4 @@
-Give me a paella recipe with a description of at least 300 words about the dish, curiosities and relevant info.
+Give me a theme halloween Caramel Apples recipe with a description of at least 300 words about the dish, curiosities and relevant info.
 Among options like appetizers, BBQ, Bread, Breakfast, Brunch, Dinner, Desert, Drinks, Lunch, Salads, Sauces, Sides, Snacks, Soups and Starters, give me the ones that applied to this dish in a bullet point table.
 Among options like Carnivore, Gluten-free, Healthy, Keto, Low carbs, Low fat, Mediterranean, Raw, Vegan, and Vegetarian, give me the ones that applied to this dish in a bullet point table.
 Where is this dish originally from?

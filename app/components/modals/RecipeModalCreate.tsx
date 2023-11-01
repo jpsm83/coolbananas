@@ -209,6 +209,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const createImagesSrc = async (
     imageFileToAdd: File[]
   ): Promise<AxiosResponse | null> => {
+    console.log(imageFileToAdd)
     try {
       const formData = new FormData();
       imageFileToAdd.forEach((image) => {
@@ -216,7 +217,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       });
 
       const uploadResponse = await axios.post("/api/upload", formData);
-
+      console.log(uploadResponse)
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(
           (response: any, index: number) => {
@@ -523,6 +524,20 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         <StepEvents
           currentUser={currentUser}
           events={events}
+          setCustomValue={setCustomValue}
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.PHOTO) {
+    modalTitle = "Recipe photos";
+    bodyContent = (
+      <div>
+        <StepPhotos
+          currentUser={currentUser}
+          imageSrc={imageSrc}
+          imageFileToAdd={imageFileToAdd}
           setCustomValue={setCustomValue}
         />
       </div>

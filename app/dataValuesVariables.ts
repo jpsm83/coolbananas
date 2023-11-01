@@ -48,6 +48,7 @@ export const categories = [
       "Raw",
       "Vegan",
       "Vegetarian",
+      "Sweet",
     ],
     description: "undefined",
   },
