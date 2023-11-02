@@ -215,10 +215,11 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       imageFileToAdd.forEach((image) => {
         formData.append("images", image);
       });
-      const uploadResponse = await axios.post("/api/upload", formData, {
-        // @ts-ignore
-        'Access-Control-Allow-Origin': '*'
-      })
+      // const uploadResponse = await axios.post("/api/upload", formData, {
+      //   // @ts-ignore
+      //   'Access-Control-Allow-Origin': '*'
+      // })
+      const uploadResponse = await axios.post("/api/upload", formData);
       console.log(uploadResponse)
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(
