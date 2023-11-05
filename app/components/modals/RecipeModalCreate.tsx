@@ -209,18 +209,12 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const createImagesSrc = async (
     imageFileToAdd: File[]
   ): Promise<AxiosResponse | null> => {
-    console.log(imageFileToAdd)
     try {
       const formData = new FormData();
       imageFileToAdd.forEach((image) => {
         formData.append("images", image);
       });
-      const uploadResponse = await axios.post("/api/upload", formData, {
-        // @ts-ignore
-        'Access-Control-Allow-Origin': '*'
-      })
-      // const uploadResponse = await axios.post("/api/upload", formData);
-      console.log(uploadResponse)
+      const uploadResponse = await axios.post("/api/upload", formData)
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(
           (response: any, index: number) => {
