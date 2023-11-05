@@ -109,7 +109,7 @@ export async function POST(request: Request) {
 
     for (const file of files) {
       // @ts-ignore
-      const bytes = await file.arrayBuffer();
+      const bytes = await files.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
       const response = await new Promise((resolve, reject) => {
@@ -127,9 +127,9 @@ export async function POST(request: Request) {
     }
     return new NextResponse(null, {
       headers: {
-        "Access-Control-Allow-Origin": "*", // Replace with your production domain
-        // "Access-Control-Allow-Methods": "POST, OPTIONS",
-        // "Access-Control-Allow-Headers": "Authorization, Content-Type",
+        "Access-Control-Allow-Origin": "coolbananas.org",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type",
       },
       // @ts-ignore
       body: JSON.stringify({ success: true, uploadResponses }),
