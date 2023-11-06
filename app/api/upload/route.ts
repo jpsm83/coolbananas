@@ -5,6 +5,7 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
+  secure: true,
 });
 
 export async function POST(request: Request) {
@@ -24,22 +25,49 @@ export async function POST(request: Request) {
   for (const file of files) {
     // @ts-ignore
     const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // const buffer = Buffer.from(bytes);
+
+    // @ts-ignore
+    let mime = file.type;
+    let encoding = "base64";
+
+    let base64Data = Buffer.from(bytes).toString("base64");
+    let fileUri = "data:" + mime + ";" + encoding + "," + base64Data;
 
     const response = await new Promise((resolve, reject) => {
       cloudinary.uploader
-        .upload_stream({ upload_preset: uploadPreset }, (error, result) => {
-          if (error) {
-            reject(error);
-          }
+        .upload(fileUri, {
+          invalidate: true,
+          upload_preset: uploadPreset,
+        })
+        .then((result) => {
+          console.log(result);
           resolve(result);
         })
-        .end(buffer);
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
     });
     uploadResponses.push(response);
   }
   return NextResponse.json({ success: true, uploadResponses });
 }
+
+//     const response = await new Promise((resolve, reject) => {
+//       cloudinary.uploader
+//         .upload_stream({ upload_preset: uploadPreset }, (error, result) => {
+//           if (error) {
+//             reject(error);
+//           }
+//           resolve(result);
+//         })
+//         .end(buffer);
+//     });
+//     uploadResponses.push(response);
+//   }
+//   return NextResponse.json({ success: true, uploadResponses });
+// }
 
 export async function DELETE(request: Request) {
   try {
