@@ -215,9 +215,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
         formData.append("images", image);
       });
       const uploadResponse = await axios.post("/api/upload", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Use 'multipart/form-data' for file uploads
-        },
       })
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(

@@ -6,7 +6,7 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import Recipes from "./components/Recipes";
 import Filters from "./components/Filters";
-import Halloween from "./components/holidays/Halloween";
+import Thanksgiving from "./components/holidays/Thanksgiving";
 
 export default async function Home({
   searchParams,
@@ -46,7 +46,7 @@ export default async function Home({
   return (
     <ClientOnly>
       <Container>
-        <Halloween />
+        <Thanksgiving />
         <Filters />
         {recipes.safeRecipes.length === 0 && <EmptyState />}
 

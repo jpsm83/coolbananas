@@ -85,6 +85,7 @@ const IngredientsInput: React.FC<IngredientsInputProps> = ({
             className="peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed pl-4 border-neutral-300 focus:border-black"
           >
             <option value="To taste">To taste</option>
+            <option value="Can">Can</option>
             <option value="Cups">Cups</option>
             <option value="Dash">Dash</option>
             <option value="Galon">Galon</option>
@@ -93,7 +94,7 @@ const IngredientsInput: React.FC<IngredientsInputProps> = ({
             <option value="Libra">Libra</option>
             <option value="Liters">Liters</option>
             <option value="Milliliter">Milliliter</option>
-            <option value="Onces">Onces</option>
+            <option value="Ounces">Ounces</option>
             <option value="Piece">Piece</option>
             <option value="Pinche">Pinche</option>
             <option value="Pint">Pint</option>

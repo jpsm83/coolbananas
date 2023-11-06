@@ -148,7 +148,7 @@ const RecipeDescription: React.FC<RecipeDescriptionProps> = ({ recipe }) => {
 
   return (
     <div className="flex flex-col cursor-default">
-      <div className="font-bold text-lg mb-8 text-justify px-4 md:px-0">
+      <div className="text-lg mb-8 text-justify px-4 md:px-0">
         {recipe.description}
       </div>
         <ImageSlider recipeImages={recipe.imageSrc} />

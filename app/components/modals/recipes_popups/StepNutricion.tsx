@@ -42,7 +42,7 @@ const StepNutricion: React.FC<StepNutricionProps> = ({
     <div className="flex flex-col gap-4">
       <Heading
         title={`ONLY IF YOU KNOW ${currentUser?.name?.toUpperCase()}, add the nutricional info of your creation. Otherways leave this part in blank. We are going to eat anyway...`}
-        subtitle="Fill up the nutritional information PER SERVING."
+        subtitle="Fill up the nutritional information PER SERVING. (grams)"
       />
       <TimeInput
         id="carbs"

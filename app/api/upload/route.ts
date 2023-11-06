@@ -37,7 +37,6 @@ export async function POST(request: Request) {
         .end(buffer);
     });
     uploadResponses.push(response);
-    // @ts-ignore
   }
   return NextResponse.json({ success: true, uploadResponses });
 }

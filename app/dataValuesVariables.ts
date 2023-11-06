@@ -137,7 +137,7 @@ export const categories = [
       "Halloween",
       "Mothers Day",
       "New years",
-      "Thanks given",
+      "Thanksgiving",
       "Valentines",
     ],
     description: "undefined",

@@ -20,7 +20,7 @@ const RecipeHowToCook: React.FC<RecipeHowToCookProps> = ({ recipe }) => {
           <div className="flex flex-col gap-6 md:gap-10 w-full">
             <div className="flex flex-row font-bold text-lg items-center gap-2">
               <FaNutritionix size={40} className="fill-orange-500" />
-              <h2>Nutritional info per server</h2>
+              <h2>Nutritional info per server (grams)</h2>
             </div>
             <div className="flex flex-wrap justify-around items-center bg-orange-50 font-bold text-md text-center p-4 gap-10 md:gap-14">
               {[

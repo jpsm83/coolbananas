@@ -37,10 +37,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "restcountries.com",
       },
-      {
-        protocol: "https",
-        hostname: "platform-lookaside.fbsbx.com",
-      },
     ],
   },
 };
