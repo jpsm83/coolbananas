@@ -7,7 +7,7 @@ const nextConfig = {
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "coolbananas.org, localhost:3000" },
+          { key: "Access-Control-Allow-Origin", value: "https://coolbananas.org, http://localhost:3000" },
           {
             key: "Access-Control-Allow-Methods",
             value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
