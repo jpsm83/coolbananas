@@ -20,59 +20,42 @@ export async function POST(request: Request) {
   }
 
   const uploadPreset = "yfhyp9my";
-  const uploadResponses: any[] = [];
+  const uploadPromises = [];
 
   for (const file of files) {
     // @ts-ignore
-    const bytes = await file.arrayBuffer();
-    // const buffer = Buffer.from(bytes);
+    const bytes = await (file as Blob).arrayBuffer();
 
     // @ts-ignore
-    let mime = file.type;
-    let encoding = "base64";
+    const mime = file.type;
+    const encoding = "base64";
+    const base64Data = Buffer.from(bytes).toString("base64");
+    const fileUri = `data:${mime};${encoding},${base64Data}`;
 
-    let base64Data = Buffer.from(bytes).toString("base64");
-    let fileUri = "data:" + mime + ";" + encoding + "," + base64Data;
-
-    const response = await new Promise((resolve, reject) => {
-      cloudinary.uploader
-        .upload(fileUri, {
-          invalidate: true,
-          upload_preset: uploadPreset,
-        })
-        .then((result) => {
-          console.log(result);
-          resolve(result);
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(error);
-        });
+    const response = cloudinary.uploader.upload(fileUri, {
+      invalidate: true,
+      upload_preset: uploadPreset,
     });
-    uploadResponses.push(response);
+
+    uploadPromises.push(response);
   }
-  return NextResponse.json({ success: true, uploadResponses });
+
+  try {
+    const uploadResponses = await Promise.all(uploadPromises);
+    return NextResponse.json({ success: true, uploadResponses });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, message: "An error occurred while uploading images." });
+  }
 }
 
-//     const response = await new Promise((resolve, reject) => {
-//       cloudinary.uploader
-//         .upload_stream({ upload_preset: uploadPreset }, (error, result) => {
-//           if (error) {
-//             reject(error);
-//           }
-//           resolve(result);
-//         })
-//         .end(buffer);
-//     });
-//     uploadResponses.push(response);
-//   }
-//   return NextResponse.json({ success: true, uploadResponses });
-// }
 
 export async function DELETE(request: Request) {
   try {
     const { publicIds } = await request.json();
+
     const deletionResponses = [];
+
     for (const publicId of publicIds) {
       const deletionResponse = await cloudinary.uploader.destroy(
         `coolBananasRecipes/${publicId}`,
@@ -104,3 +87,60 @@ export async function DELETE(request: Request) {
     });
   }
 }
+
+// export async function DELETE(request: Request) {
+//   try {
+//     const { publicIds } = await request.json();
+
+//     if (!publicIds || !Array.isArray(publicIds) || publicIds.length === 0) {
+//       return NextResponse.json({
+//         success: false,
+//         message: "Invalid or empty publicIds array.",
+//       });
+//     }
+
+//     const deletionResponses = [];
+
+//     for (const publicId of publicIds) {
+//       try {
+//         const deletionResponse = await cloudinary.uploader.destroy(`coolBananasRecipes/${publicId}`, {
+//           resource_type: "image",
+//         });
+
+//         console.log(deletionResponse);
+
+//         if (deletionResponse.result === "ok") {
+//           deletionResponses.push({
+//             publicId,
+//             success: true,
+//             message: "Image deleted successfully.",
+//           });
+//         } else {
+//           deletionResponses.push({
+//             publicId,
+//             success: false,
+//             message: "Failed to delete the image.",
+//           });
+//         }
+//       } catch (deletionError) {
+//         console.error(deletionError);
+//         deletionResponses.push({
+//           publicId,
+//           success: false,
+//           message: "Error occurred while deleting the image.",
+//         });
+//       }
+//     }
+
+//     return NextResponse.json({
+//       success: true,
+//       deletionResponses,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return NextResponse.json({
+//       success: false,
+//       message: "Error occurred while processing the DELETE request.",
+//     });
+//   }
+// }

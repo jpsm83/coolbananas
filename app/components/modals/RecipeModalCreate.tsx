@@ -210,12 +210,12 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     imageFileToAdd: File[]
   ): Promise<AxiosResponse | null> => {
     try {
-      const formData = new FormData();
+      const data = new FormData();
       imageFileToAdd.forEach((image) => {
-        formData.append("images", image);
+        data.append("images", image);
       });
-      const uploadResponse = await axios.post("/api/upload", formData, {
-      })
+
+      const uploadResponse = await axios.post("/api/upload", data)
       if (uploadResponse.status === 200) {
         uploadResponse.data.uploadResponses.forEach(
           (response: any, index: number) => {
@@ -294,7 +294,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           reset();
           setStep(STEPS.LEGAL);
           recipeModalCreate.onClose();
-          router.refresh();
+          // router.refresh();
           router.push(`/recipes/${response.data.id}`);
         })
         .catch(() => {
