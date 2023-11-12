@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import { SafeUser } from "@/app/types";
 import ImageInput from "../../inputs/ImageInput";
@@ -8,12 +8,9 @@ import Heading from "../../Heading";
 
 interface StepPhotosProps {
   currentUser: SafeUser | null | undefined;
-  imageSrc: string[] | null | undefined;
-  imageUrlToDelete?:
-    | (string | { imageUrl: string; imageName: string })[]
-    | null
-    | undefined;
-  imageFileToAdd: File[] | null | undefined;
+  imageSrc: [] | null | undefined;
+  imageUrlToDelete?: [] | null | undefined;
+  imageFileToAdd: [] | null | undefined;
   setCustomValue: (value: string, imageSrc: File[] | string[] | {}) => void;
 }
 
@@ -25,7 +22,7 @@ const StepPhotos: React.FC<StepPhotosProps> = ({
   setCustomValue,
 }) => {
   const [imagesQty, setImagesQty] = useState<number>(
-    imageFileToAdd.length + imageSrc.length
+    (imageFileToAdd ? imageFileToAdd.length : 0) + (imageSrc ? imageSrc.length : 0)
   );
 
   const handleImageInput = (e: ChangeEvent<HTMLInputElement>) => {

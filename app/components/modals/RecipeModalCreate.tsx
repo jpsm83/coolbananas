@@ -209,31 +209,34 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
   const createImagesSrc = async (
     imageFileToAdd: File[]
   ): Promise<AxiosResponse | null> => {
-    try {
-      const data = new FormData();
-      imageFileToAdd.forEach((image) => {
-        data.append("images", image);
-      });
+    if (imageFileToAdd) {
+      try {
+        const data = new FormData();
+        imageFileToAdd.forEach((image) => {
+          data.append("images", image);
+        });
 
-      const uploadResponse = await axios.post("/api/upload", data)
-      if (uploadResponse.status === 200) {
-        uploadResponse.data.uploadResponses.forEach(
-          (response: any, index: number) => {
-            imageSrc.push(response.secure_url);
-          }
-        );
-        return uploadResponse;
-      } else {
-        console.error("Failed to upload images");
+        const uploadResponse = await axios.post("/api/upload", data);
+        if (uploadResponse.status === 200) {
+          uploadResponse.data.uploadResponses.forEach(
+            (response: any, index: number) => {
+              imageSrc.push(response.secure_url);
+            }
+          );
+          return uploadResponse;
+        } else {
+          console.error("Failed to upload images");
+          return null;
+        }
+      } catch (error) {
+        console.error(error);
         return null;
       }
-    } catch (error) {
-      console.error(error);
-      return null;
     }
+    return null;
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async () => {
     if (step !== STEPS.NUTRI) {
       return onNext();
     }
@@ -294,7 +297,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
           reset();
           setStep(STEPS.LEGAL);
           recipeModalCreate.onClose();
-          // router.refresh();
           router.push(`/recipes/${response.data.id}`);
         })
         .catch(() => {

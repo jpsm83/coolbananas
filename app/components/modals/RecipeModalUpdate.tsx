@@ -59,7 +59,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
 }) => {
   const router = useRouter();
   const recipeModalUpdate = useRecipeModalUpdate();
-  const [step, setStep] = useState(STEPS.PHOTO);
+  const [step, setStep] = useState(STEPS.LEGAL);
   const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, setValue, watch, reset } = useForm<FieldValues>({
@@ -266,7 +266,7 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     return null;
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async () => {
     if (step !== STEPS.NUTRI) {
       return onNext();
     }
@@ -283,7 +283,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     };
 
     const updatedData = {
-      // updatedAt: new Date(),
       name: name,
       description: description,
       imageSrc: imageSrc,
@@ -341,8 +340,6 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
       console.log(error);
     }
   };
-
-  console.log(imageFileToAdd)
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.NUTRI) {
