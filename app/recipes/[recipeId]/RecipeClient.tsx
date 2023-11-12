@@ -39,7 +39,7 @@ const RecipeClient: React.FC<RecipeClientProps> = ({
 
         <div className="flex flex-col items-center md:flex-row md:items-start md:mt-8">
           <div className="fixed z-10 bg-white md:w-auto w-full border-b-[1px]">
-            <RecipeSharing recipe={recipe} />
+            <RecipeSharing />
           </div>
           <div className="flex flex-col pt-24 md:pt-0 md:pl-20">
             <RecipeHeader recipe={recipe} currentUser={currentUser} />
