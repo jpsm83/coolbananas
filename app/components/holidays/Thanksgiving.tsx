@@ -14,7 +14,7 @@ const Thanksgiving = () => {
       }}
     >
       <div className=" absolute flex align-middle justify-center">
-        <div className="flex flex-col justify-center align-middle drop-shadow-xl gap-4 border-2 p-4 md:px-8 border-orange-500 text-center text-white bg-gray-900/60 m-4">
+        <div className="flex flex-col justify-center align-middle drop-shadow-xl gap-4 border-2 p-4 md:px-8 border-orange-500 text-center text-white bg-gray-900/50 m-4">
           <p className="text-xl md:text-3xl font-bold">
             WELCOME TO YOUR&apos;S RECIPE LIBRARY
           </p>
