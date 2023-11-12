@@ -10,6 +10,7 @@ import { SafeUser } from "@/app/types";
 import axios, { AxiosResponse } from "axios";
 
 interface DeleteModalProps {
+  
   currentUser: SafeUser | null | undefined;
 }
 const DeleteModal: React.FC<DeleteModalProps> = ({ currentUser }) => {

@@ -38,7 +38,7 @@ export default async function RootLayout({
           <RecipeModalCreate currentUser={currentUser} />
           <LoginModal />
           <RegisterModal />
-          <DeleteModal currentUser={currentUser} recipe={null} />
+          <DeleteModal currentUser={currentUser} />
           <EditUserModal currentUser={currentUser} />
           <div className="fixed top-0 bg-white w-full z-30">
             <Navbar currentUser={currentUser} />
