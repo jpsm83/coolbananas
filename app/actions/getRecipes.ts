@@ -136,9 +136,11 @@ export default async function getRecipes({
       // Add the diet filter if allergensOptions exists
       filters = {
         ...filters, // Merge existing filters
-        method: {
-          hasEvery: allergensOptions,
-        },
+        NOT: {
+          allergens: {
+              hasSome: allergensOptions,
+            }
+          },
       };
     }
 
@@ -146,7 +148,7 @@ export default async function getRecipes({
       // Add the diet filter if eventsOptions exists
       filters = {
         ...filters, // Merge existing filters
-        method: {
+        events: {
           hasEvery: eventsOptions,
         },
       };

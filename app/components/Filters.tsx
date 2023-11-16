@@ -15,9 +15,6 @@ const Filters = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log('filter ', recipeFilters.dataFilter);
-  console.log('filter ' + recipeFilters.url);
-
   const [currentPath, setCurrentPath] = useState<string | null>(null);
 
   const setQueryUrl = () => {

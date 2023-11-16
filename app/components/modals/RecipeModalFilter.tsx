@@ -194,7 +194,7 @@ const RecipeModalFilter: React.FC<RecipeModalFilterProps> = ({ category }) => {
   }
 
   if (category === "Allergens") {
-    modalTitle = "Filter by allergens";
+    modalTitle = "Filter by allergens to be avoid";
     bodyContent = (
       <div>
         <StepAllergens
