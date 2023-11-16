@@ -51,7 +51,6 @@ export function ImageSlider({ recipeImages }: ImageSliderProps) {
               className="w-full aspect-[4/3]"
               style={{
                 objectFit: "cover",
-                objectPosition: "bottom"
               }}
             />
           </div>

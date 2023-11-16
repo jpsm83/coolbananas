@@ -16,14 +16,14 @@ const Logo = () => {
     <Image
       onClick={() => redirectUrl()}
       alt="Logo"
-      className="cursor-pointer"
+      className="cursor-pointer w-auto h-auto"
       style={{
         objectFit: "cover",
       }}
       width={220}
       height={220}
       src="/images/logo.png"
-    />
+      />
   );
 };
 

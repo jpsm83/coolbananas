@@ -15,6 +15,9 @@ const Filters = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  console.log('filter ', recipeFilters.dataFilter);
+  console.log('filter ' + recipeFilters.url);
+
   const [currentPath, setCurrentPath] = useState<string | null>(null);
 
   const setQueryUrl = () => {
@@ -51,12 +54,12 @@ const Filters = () => {
         queryUrl += `&country=${recipeFilters.dataFilter.cuisine.value}`;
       } else if (
         filterName === "time" &&
-        (recipeFilters.dataFilter?.maxHours > 0 ||
-          recipeFilters.dataFilter?.maxMinutes > 0)
+        (parseInt(recipeFilters.dataFilter?.maxHours) > 0 ||
+          parseInt(recipeFilters.dataFilter?.maxMinutes) > 0)
       ) {
         queryUrl += `&time=${
-          recipeFilters.dataFilter?.maxHours * 60 +
-          recipeFilters.dataFilter?.maxMinutes
+          parseInt(recipeFilters.dataFilter?.maxHours) * 60 +
+          parseInt(recipeFilters.dataFilter?.maxMinutes)
         }`;
       } else if (
         filterName === "ingredients" &&

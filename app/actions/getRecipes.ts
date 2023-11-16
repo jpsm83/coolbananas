@@ -125,7 +125,7 @@ export default async function getRecipes({
 
     if (ingredientsOptions) {
       filters = {
-        ...filters, // Merge existing filters
+        ...filters,
         listIngredientsNames: {
           hasEvery: ingredientsOptions,
         },

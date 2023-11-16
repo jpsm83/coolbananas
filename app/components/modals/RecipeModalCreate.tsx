@@ -246,11 +246,14 @@ const RecipeModalCreate: React.FC<RecipeModalCreateProps> = ({
     let listIngredientsNamesArray: string[] = [];
 
     const createListIngredientsNamesArray = () => {
+      let listIngredients = "";
       ingredients.forEach((ingredient: { name: string }) => {
-        const sanitazeNames = ingredient.name.toLowerCase();
-        listIngredientsNamesArray.push(sanitazeNames);
+        listIngredients += ingredient.name.toLowerCase() + " ";
+        listIngredientsNamesArray = listIngredients.trim().split(" ");
       });
     };
+
+    createListIngredientsNamesArray()
 
     const createData = {
       name: name,

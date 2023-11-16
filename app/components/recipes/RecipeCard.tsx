@@ -63,7 +63,6 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, currentUser }) => {
             alt="Recipe"
             width={600}
             height={600}
-            objectPosition="center"
             className="
               h-full w-full
                 hover:scale-110 

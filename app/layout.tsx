@@ -32,6 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="!scroll-smooth">
+      <meta name="p:domain_verify" content="634a90b6542f23249ac6bc2fc46348d2"/>
       <body>
         <ClientOnly>
           <ToasterProvider />
