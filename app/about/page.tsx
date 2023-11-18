@@ -5,6 +5,7 @@ import {
   GrInstagram,
   GrPinterest,
   GrYoutube,
+  GrTiktok,
 } from "react-icons/gr";
 
 export const metadata: Metadata = {
@@ -120,16 +121,19 @@ const AboutPage = () => {
           </div>
 
           <div className="flex flex-row justify-center gap-8 md:gap-12">
-            <a href="https:/www.facebook.com" target="_blank">
+            <a href="https:/www.https://www.facebook.com/profile.php?id=61553584836120" target="_blank">
               <GrFacebook size={30} />
             </a>
-            <a href="https:/www.instagram.com" target="_blank">
+            <a href="https:/www.https://www.instagram.com/coolbananasrecipelibrary/" target="_blank">
               <GrInstagram size={30} />
             </a>
-            <a href="https:/www.pinterest.com" target="_blank">
+            <a href="https:/www.https://www.pinterest.es/coolbananasorg2023/" target="_blank">
               <GrPinterest size={30} />
             </a>
-            <a href="https:/www.youtube.com" target="_blank">
+            <a href="https:/www.https://www.tiktok.com/@coolbananasorg" target="_blank">
+              <GrTiktok size={30} />
+            </a>
+            <a href="https:/www.https://youtube.com" target="_blank">
               <GrYoutube size={30} />
             </a>
           </div>

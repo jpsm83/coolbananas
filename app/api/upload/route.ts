@@ -61,7 +61,6 @@ export async function DELETE(request: Request) {
         `coolBananasRecipes/${publicId}`,
         { resource_type: "image" }
       );
-      console.log(deletionResponse);
       if (deletionResponse.result === "ok") {
         deletionResponses.push({
           publicId,
@@ -87,60 +86,3 @@ export async function DELETE(request: Request) {
     });
   }
 }
-
-// export async function DELETE(request: Request) {
-//   try {
-//     const { publicIds } = await request.json();
-
-//     if (!publicIds || !Array.isArray(publicIds) || publicIds.length === 0) {
-//       return NextResponse.json({
-//         success: false,
-//         message: "Invalid or empty publicIds array.",
-//       });
-//     }
-
-//     const deletionResponses = [];
-
-//     for (const publicId of publicIds) {
-//       try {
-//         const deletionResponse = await cloudinary.uploader.destroy(`coolBananasRecipes/${publicId}`, {
-//           resource_type: "image",
-//         });
-
-//         console.log(deletionResponse);
-
-//         if (deletionResponse.result === "ok") {
-//           deletionResponses.push({
-//             publicId,
-//             success: true,
-//             message: "Image deleted successfully.",
-//           });
-//         } else {
-//           deletionResponses.push({
-//             publicId,
-//             success: false,
-//             message: "Failed to delete the image.",
-//           });
-//         }
-//       } catch (deletionError) {
-//         console.error(deletionError);
-//         deletionResponses.push({
-//           publicId,
-//           success: false,
-//           message: "Error occurred while deleting the image.",
-//         });
-//       }
-//     }
-
-//     return NextResponse.json({
-//       success: true,
-//       deletionResponses,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return NextResponse.json({
-//       success: false,
-//       message: "Error occurred while processing the DELETE request.",
-//     });
-//   }
-// }

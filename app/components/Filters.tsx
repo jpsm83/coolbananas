@@ -101,6 +101,7 @@ const Filters = () => {
 
   useEffect(() => {
     router.push(setQueryUrl()!);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipeFilters.dataFilter]);
 
   return (

@@ -129,6 +129,11 @@ model Report {
   recipeId String @db.ObjectId
 }
 
+model Subscribers {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  subscribersEmail String[]
+}
+
 enum Role {
   BASIC
   ADMIN
