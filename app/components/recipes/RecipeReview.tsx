@@ -30,19 +30,18 @@ const RecipeReview: React.FC<RecipeReviewProps> = ({
     (review) => review.authorId === currentUser?.id
   );
 
-  const userReviewId = () => {
-    if (reviews) {
-      for (let i = 0; i < reviews.length; i++) {
-        if (reviews[i].authorId === currentUser?.id) {
-          reviewModal.setReviewId(reviews[i].id);
-          return true;
+  const openReviewModal = useCallback(() => {
+    const userReviewId = () => {
+      if (reviews) {
+        for (let i = 0; i < reviews.length; i++) {
+          if (reviews[i].authorId === currentUser?.id) {
+            reviewModal.setReviewId(reviews[i].id);
+            return true;
+          }
         }
       }
-    }
-    return false;
-  };
-
-  const openReviewModal = useCallback(() => {
+      return false;
+    };
     if (!currentUser) {
       return loginModal.onOpen();
     }
@@ -57,7 +56,7 @@ const RecipeReview: React.FC<RecipeReviewProps> = ({
       // @ts-ignore
       reviewModal.onOpen();
     }
-  }, [currentUser, loginModal, reviewModal]);
+  }, [currentUser, loginModal, reviewModal, hasUserReviewed, reviews]);
 
   const contentCount = () => {
     let contentCount = 0;

@@ -110,7 +110,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     } else {
       console.warn("Cannot delete review: currentUser or review is invalid.");
     }
-  }, [router, review, currentUser]);
+  }, [router, review, currentUser, averageRecipeRate]);
 
   return (
     <div className="bg-gray-100 p-4 md:p-8">
