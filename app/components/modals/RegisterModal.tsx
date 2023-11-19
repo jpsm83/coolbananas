@@ -57,12 +57,14 @@ const RegisterModal = () => {
     await signIn("google");
     // Access the user's email from the session object
     const userEmail = session?.user?.email;
-
+    console.log(userEmail)
     if (userEmail) {
       // Make a request to your API with the user's email
       axios
         .post("/api/subscribers", { email: userEmail })
-        .then(() => {})
+        .then(() => {
+          console.log("supose to be subscribed")
+        })
         .catch((error) => {
           console.log("Error saving user email to subscribers:", error);
         });

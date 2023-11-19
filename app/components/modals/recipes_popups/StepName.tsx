@@ -20,9 +20,11 @@ const StepName: React.FC<StepNameProps> = ({
   register,
   setCustomValue,
 }) => {
+
   const handleChange = () => {
     setCustomValue("name", name);
   };
+  
   return (
     <div className="flex flex-col gap-8">
       <Heading

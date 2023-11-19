@@ -3,6 +3,10 @@
 import Container from "../components/Container";
 import RecipeCard from "./recipes/RecipeCard";
 import { SafeRecipe, SafeUser } from "../types";
+import useSubscriberModal from "../hooks/useSubscriberModal";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface RecipesProps {
   recipes?: SafeRecipe[] | null | undefined;
@@ -10,7 +14,27 @@ interface RecipesProps {
 }
 
 const Recipes: React.FC<RecipesProps> = ({ recipes, currentUser }) => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const renderedRecipes = [];
+  const subscriberModal = useSubscriberModal();
+  const { data: session } = useSession();
+
+  const userEmail = session?.user?.email;
+
+  const userIsSubscribed = async () => {
+    try {
+      const response = await axios.get("/api/subscribers");
+      setIsSubscribed(response.data.includes(userEmail));
+    } catch (error) {
+      console.error(error);
+      setIsSubscribed(false);
+    }
+  };
+
+  useEffect(() => {
+    userIsSubscribed();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
 
   // Insert the first advertisement card
   // @ts-ignore
@@ -71,6 +95,14 @@ const Recipes: React.FC<RecipesProps> = ({ recipes, currentUser }) => {
           {renderedRecipes}
         </div>
       </div>
+      <button
+        className={`fixed border-white border bottom-0 right-0 mb-8 mr-8 shadow-md transform transition-transform duration-300 hover:scale-110 animate-heartbeat bg-orange-500 text-white py-2 px-4 rounded ${
+          isSubscribed ? "hidden" : ""
+        }`}
+        onClick={() => subscriberModal.onOpen()}
+      >
+        Subscribe ❤️
+      </button>
     </Container>
   );
 };

@@ -10,6 +10,7 @@ import RecipeModalCreate from "./components/modals/RecipeModalCreate";
 import { Metadata } from "next";
 import DeleteModal from "./components/modals/DeleteModal";
 import Footer from "./components/Footer";
+import SubscriberModal from "./components/modals/SubscriberModal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://https://coolbananas.org/"),
@@ -35,6 +36,7 @@ export default async function RootLayout({
       <meta name="p:domain_verify" content="634a90b6542f23249ac6bc2fc46348d2" />
       <body>
         <ClientOnly>
+          <SubscriberModal />
           <ToasterProvider />
           <RecipeModalCreate currentUser={currentUser} />
           <LoginModal />
