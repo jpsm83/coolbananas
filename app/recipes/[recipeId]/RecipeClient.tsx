@@ -15,7 +15,10 @@ import RecipeReview from "@/app/components/recipes/RecipeReview";
 import RecipeVideo from "@/app/components/recipes/RecipeVideo";
 import RecipeSharing from "@/app/components/recipes/RecipeSharing";
 import RecipeModalUpdate from "@/app/components/modals/RecipeModalUpdate";
-import Logo from "@/app/components/navbar/Logo";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import useSubscriberModal from "@/app/hooks/useSubscriberModal";
+import axios from "axios";
 
 interface RecipeClientProps {
   recipe: SafeRecipe;
@@ -30,6 +33,27 @@ const RecipeClient: React.FC<RecipeClientProps> = ({
   currentUser,
   reviews,
 }) => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const subscriberModal = useSubscriberModal();
+  const { data: session } = useSession();
+
+  const userEmail = session?.user?.email;
+
+  const userIsSubscribed = async () => {
+    try {
+      const response = await axios.get("/api/subscribers");
+      setIsSubscribed(response.data.includes(userEmail));
+    } catch (error) {
+      console.error(error);
+      setIsSubscribed(false);
+    }
+  };
+
+  useEffect(() => {
+    userIsSubscribed();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
+
   return (
     <Container>
       <div id="top-of-recipe-page">
@@ -83,8 +107,7 @@ const RecipeClient: React.FC<RecipeClientProps> = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-row items-center justify-center gap-4 md:gap-14 mb-6 md:mb-10">
-          <Logo />
+        <div className="flex justify-center mb-6 md:mb-10">
           <a
             href="#top-of-recipe-page"
             className="bg-orange-500 hover:opacity-80 text-white font-bold py-2 px-2 md:px-6 rounded-lg transition shadow-md"
@@ -93,6 +116,14 @@ const RecipeClient: React.FC<RecipeClientProps> = ({
           </a>
         </div>
       </div>
+      <button
+        className={`fixed border-white border bottom-0 right-0 md:mb-8 mb-4 md:mr-8 mr-4 shadow-md transform transition-transform duration-300 hover:scale-110 animate-heartbeat bg-orange-500 text-white py-2 px-4 rounded ${
+          isSubscribed ? "hidden" : ""
+        }`}
+        onClick={() => subscriberModal.onOpen()}
+      >
+        Subscribe ❤️
+      </button>
     </Container>
   );
 };
