@@ -53,7 +53,6 @@ const StepTime: React.FC<StepTimeProps> = ({
         subLabel="Minutes"
         disabled={isLoading}
         register={register}
-        required
         onClick={() => handleChange("timeCook", timeCook)}
       />
       <TimeInput

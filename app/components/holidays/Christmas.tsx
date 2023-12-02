@@ -1,13 +1,13 @@
 "user client";
 
-const Halloween = () => {
+const Christmas = () => {
   return (
     <div className="flex justify-center align-middle items-center h-auto md:h-[280px] w-full">
       <div className="relative w-full h-full">
         <div
           className="absolute w-full h-full"
           style={{
-            backgroundImage: `url("/images/halloween_background.webp")`,
+            backgroundImage: `url("/images/christmas.jpg")`,
             backgroundRepeat: "repeat",
             backgroundPosition: "center",
             backgroundSize: "240px 240px",
@@ -32,7 +32,7 @@ const Halloween = () => {
         <div
           className="absolute w-full h-full"
           style={{
-            backgroundImage: `url("/images/halloween_background.webp")`,
+            backgroundImage: `url("/images/christmas.jpg")`,
             backgroundRepeat: "repeat",
             backgroundPosition: "center",
             backgroundSize: "240px 240px",
@@ -49,4 +49,4 @@ const Halloween = () => {
   );
 };
 
-export default Halloween;
+export default Christmas;

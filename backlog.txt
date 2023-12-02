@@ -1,0 +1,6 @@
+- recipe name on recipes card have to be in the middle
+- recipe card heigh have to be dynamic in case the recipe name is too big
+- when subscribe, refresh the page
+- image carroucel ir working weird
+- recipe cards have to fill the page regardless it size
+- add social media to creation of recipe

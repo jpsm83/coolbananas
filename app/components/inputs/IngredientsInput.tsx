@@ -84,7 +84,9 @@ const IngredientsInput: React.FC<IngredientsInputProps> = ({
             onChange={handleChange}
             className="peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed pl-4 border-neutral-300 focus:border-black"
           >
+            <option value="Garnish">To taste</option>
             <option value="To taste">To taste</option>
+            <hr />
             <option value="Can">Can</option>
             <option value="Cups">Cups</option>
             <option value="Dash">Dash</option>

@@ -6,7 +6,7 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import Recipes from "./components/Recipes";
 import Filters from "./components/Filters";
-import Thanksgiving from "./components/holidays/Thanksgiving";
+import VideoIntro from "./components/holidays/Christmas";
 
 export default async function Home({
   searchParams,
@@ -46,7 +46,7 @@ export default async function Home({
   return (
     <ClientOnly>
       <Container>
-        <Thanksgiving />
+        <VideoIntro />
         <Filters />
         {recipes.safeRecipes.length === 0 && <EmptyState />}
 
