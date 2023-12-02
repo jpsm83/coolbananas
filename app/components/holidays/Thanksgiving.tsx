@@ -2,7 +2,7 @@
 
 const Thanksgiving = () => {
   return (
-    <div className="flex justify-center align-middle items-center h-auto md:h-[280px] w-full">
+    <div className="flex justify-center align-middle items-center h-auto md:h-[280px] w-full bg-black">
       <div className="relative w-full h-full">
         <div
           className="absolute w-full h-full"
