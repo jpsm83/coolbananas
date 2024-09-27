@@ -4,3 +4,8 @@
 - image carroucel ir working weird
 - recipe cards have to fill the page regardless it size
 - add social media to creation of recipe
+- replace logo from navbar to a shearch input
+- add "active" to users db, so if a user want delete account we keep it but it can access anymore
+    it clear the problem that if a user get delete, its "id" also desapear and the relation
+    between recipes, likes, ratings and mensages doesnt crash
+- cooking time can be 0 if it is a drink

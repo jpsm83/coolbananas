@@ -1,4 +1,4 @@
-Give me a Irish Coffee drink recipe, with a description of at least 200 words about the dish, curiosities and relevant info.
+Give me a Apple Crisp recipe, A dessert made with baked, spiced apples topped with a crispy mixture of oats, flour, butter, and sugar, with a description of at least 200 words about the dish, curiosities and relevant info.
 Among options like appetizers, BBQ, Bread, Breakfast, Brunch, Dinner, Desert, Drinks, Lunch, Salads, Sauces, Sides, Snacks, Soups and Starters, give me the ones that applied to this dish in a bullet point table.
 Among options like Carnivore, Gluten-free, Healthy, Keto, Low carbs, Low fat, Mediterranean, Raw, Vegan, Sweet, and Vegetarian, give me the ones that applied to this dish in a bullet point table.
 Where is this dish originally from?
@@ -18,33 +18,13 @@ PINTEREST
 
 - create a title for board in pinterest with the most popular key words on this platform related with the cocktail recipes with a maximum of 50 characters and no hashtags
 
-INSTAGRAM
-- give me the 30 most used Instagram hastags for the brandy butter reciepe in one line separate by spaces
+give me the 25 most used hashtags in social medias platforms relate to apple pie recipe in one line separate by spaces
 
-TIKTOK
-- give me the 30 most used tiktok hastags for the brandy butter reciepe in one line separate by spaces to be used as caption on my post
-
-TWITER X
-🍌✨Embark on a flavorful journey with Cool Bananas! 🌈🍌Join for culinary fun! 👩‍🍳🍌Craft, share, savor masterpieces. 🌮🍰Spice up kitchen adventures, join our community. 🌶️❤️Ready to turn your kitchen into a stage? 🚀👨‍🍳Check out this recipe and more www.coolbananas.org/recipes/655c6efd04ef3ddbd6d5c28e🍽️🍌
-
-
-
-Chicken Noodle Soup: A classic comfort food, especially during cold winter days.
-
-Macaroni and Cheese: Creamy, cheesy, and nostalgic, making it a favorite for many.
-
-Chili: Hearty and warming, perfect for cozy evenings.
-
-Roast Chicken with Vegetables: A comforting and satisfying dish that fills your home with delicious aromas.
-
-Beef Stew: Tender beef, hearty vegetables, and rich broth create a comforting and filling stew.
-
-Mashed Potatoes with Gravy: Creamy mashed potatoes paired with savory gravy is a quintessential comfort dish.
-
-Lasagna: Layers of pasta, cheese, and savory meat sauce make for a hearty and satisfying meal.
-
-Pot Roast: Slow-cooked beef with vegetables results in a flavorful and comforting dish.
-
-Hot Chocolate with Marshmallows: A sweet and warm beverage perfect for snuggling up on a cold December night.
-
-Apple Pie: A classic dessert that brings warmth and nostalgia, especially during the holiday season.
+=============================================================================================
+Delicious Chicken Veg Roast 🍗🥦 Easy Recipe for a Flavorful Meal! #HealthyEats #RoastedChicken #CookingIdeas
+Full recipe www.coolbananas.org/recipes/6571870fc3121e0c2987b7e2
+❤️
+🍌✨Embark on a flavorful journey with Cool Bananas! 🌈🍌Join for culinary fun! 👩‍🍳✨Craft, share, savor masterpieces. 🌶️🍰Spice up kitchen adventures, join our community. 👨‍🍳🌮Ready to turn your kitchen into a stage? 🚀👨‍🍳
+❤️
+#CoolBananas #ChickenRecipe #VegRoast #CookingIdeas #FoodieLife #HealthyEats #HomeCooking #DeliciousDinner #RecipeInspiration #TastyTuesday #CookAtHome #FoodLove #YummyInMyTummy #EatWell #DinnerIdeas #RoastedGoodness #FlavorfulFeast #CookingAdventures #GourmetCooking #SimpleRecipes #HomemadeDelights #FoodLoversUnite #EasyCooking #FamilyDinner #WeeknightDinner #SavorTheFlavor #FoodCreation #CulinaryCreations #MealTimeMagic #KitchenChronicles
+=============================================================================================
